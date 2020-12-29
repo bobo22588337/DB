@@ -21,6 +21,12 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+    
+    <style type="text/css">
+        a:hover {
+            background-color: #f2eee5;
+        }
+    </style>
 </head>
 
 <body>
@@ -221,7 +227,7 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Checkout Section Begin -->
+    <!-- Update News Section Begin -->
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
@@ -272,7 +278,7 @@
             </div>
         </div>
     </section>
-    <!-- Checkout Section End -->
+    <!-- Update News Section End -->
 
     <!-- Js Plugins -->
     <script src="../js/jquery-3.3.1.min.js"></script>
