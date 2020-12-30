@@ -22,11 +22,33 @@
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
     
+    <!-- hoverable hyperlink& buttons -->
     <style type="text/css">
-        a:hover {
+        .checkout__form h4 a:hover {
+            background-color: #f2eee5;            
+        }
+        
+        .buttons button {
+            background: #f2eee5;
+            color: black;
+        }
+        
+        .buttons button:hover {
+            background-color: black;
+            color: #f2eee5;
+        }
+        
+        .buttons input {
+            background: #e5c1c5;
+            color: #f2eee5;
+        }
+        
+        .buttons input:hover {
             background-color: #f2eee5;
+            color: #e5c1c5;
         }
     </style>
+
 </head>
 
 <body>
@@ -231,7 +253,7 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <h4><a href="news.php" style="color: black;"><span class="fa fa-angle-left"></span>&nbsp;返回最新消息</a></h4>
+                <h4><a href="news.php" onclick="javascript: return confirm('確定返回最新消息?');" style="color: black;"><span class="fa fa-angle-left"></span>&nbsp;返回最新消息</a></h4>
                 <form method="post" action="update_function.php">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
@@ -265,9 +287,10 @@
                                 <textarea name="news_content" rows="10" style="width:100%; border: 1px solid #ebebeb; border-radius: 4px; padding-left: 20px; padding-top: 10px; color: #b2b2b2;" required><?php echo $record[2]?></textarea>
                             </div>
                             <input type="hidden" name="news_id" value="<?php echo $_GET['news_id']?>">
-                            <input type="submit" class="site-btn" style="background: #e5c1c5;" value="修改">
-                            <button type="reset" class="site-btn" style="background: #f2eee5; color: black;">
-                            取消</button>
+                            <div class="buttons">
+                                <input type="submit" class="site-btn" value="修改">
+                                <button type="reset" class="site-btn" >取消</button>
+                            </div>
                             <?php
                                 }
                                 mysql_close($con);
