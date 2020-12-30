@@ -270,7 +270,7 @@
                                 <textarea name="news_content" rows="10" style="width:100%; border: 1px solid #ebebeb; border-radius: 4px; padding-left: 20px; padding-top: 10px; color: #b2b2b2;" required></textarea>
                             </div>
                             <div class="buttons">
-                                <input type="submit" class="site-btn" value="送出">
+                                <input type="submit" onclick="javascript: return confirm('確認送出?');" class="site-btn" value="送出">
                                 <button type="reset" class="site-btn">取消</button>
                             </div>
                         </div>

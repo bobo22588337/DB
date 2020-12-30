@@ -288,7 +288,7 @@
                             </div>
                             <input type="hidden" name="news_id" value="<?php echo $_GET['news_id']?>">
                             <div class="buttons">
-                                <input type="submit" class="site-btn" value="修改">
+                                <input type="submit" onclick="javascript: return confirm('確認修改?');" class="site-btn" value="修改">
                                 <button type="reset" class="site-btn" >取消</button>
                             </div>
                             <?php
