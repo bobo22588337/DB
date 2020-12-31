@@ -275,8 +275,7 @@
                             ?>
                             <div class="checkout__input">
                                 <p>作者</p>
-                                <input type="text" name="user_email" value="<?php echo $record[4]?>">
-                                <!--用Session代入使用者(?)-->
+                                <input type="text" name="user_email" value="<?php echo $_SESSION[user_email]; ?>">
                             </div>
                             <div class="checkout__input">
                                 <p>標題<span>*</span></p>

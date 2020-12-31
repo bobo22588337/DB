@@ -273,10 +273,10 @@
                                         <a href="update_news.php?news_id=<?php echo $record[0]?>"><span class="fa fa-edit"></span></a>
                                     </td>
                                 </tr>
-                                <?php
+                                <?php 
                                     }
-                                    mysql_close($con);
-                                ?>
+                                    mysql_close($con);      
+                                ?> 
                             </tbody>
                         </table>
                     </div>
