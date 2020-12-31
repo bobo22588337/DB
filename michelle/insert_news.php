@@ -25,7 +25,7 @@
     <!-- hoverable hyperlink& buttons -->
     <style type="text/css">
         .checkout__form h4 a:hover {
-            background-color: #f2eee5;            
+            background-color: #f2eee5;             
         }
         
         .buttons button {
@@ -253,7 +253,7 @@
         <div class="container">
             <div class="checkout__form">
                 <h4><a href="news.php" onclick="javascript: return confirm('確定返回最新消息?');" style="color: black;"><span class="fa fa-angle-left"></span>&nbsp;返回最新消息</a></h4>
-                <form method="post" action="insert_function.php">
+                <form method="post" action="iud_func.php">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="checkout__input">
@@ -270,7 +270,7 @@
                                 <textarea name="news_content" rows="10" style="width:100%; border: 1px solid #ebebeb; border-radius: 4px; padding-left: 20px; padding-top: 10px; color: #b2b2b2;" required></textarea>
                             </div>
                             <div class="buttons">
-                                <input type="submit" onclick="javascript: return confirm('確認送出?');" class="site-btn" value="送出">
+                                <input name="insert_news" type="submit" onclick="javascript: return confirm('確認送出?');" class="site-btn" value="送出">
                                 <button type="reset" class="site-btn">取消</button>
                             </div>
                         </div>

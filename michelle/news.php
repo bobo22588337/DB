@@ -269,7 +269,7 @@
                                         <?php echo $record[4]?>
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <a href="del_news.php?news_id=<?php echo $record[0]?>" onclick="javascript: return confirm('確定刪除?');"><span class="icon_close"></span></a>
+                                        <a href="iud_func.php?news_id=<?php echo $record[0]?>&del_news=del_news" onclick="javascript: return confirm('確定刪除?');"><span class="icon_close"></span></a>
                                         <a href="update_news.php?news_id=<?php echo $record[0]?>"><span class="fa fa-edit"></span></a>
                                     </td>
                                 </tr>

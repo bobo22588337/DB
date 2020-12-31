@@ -254,7 +254,7 @@
         <div class="container">
             <div class="checkout__form">
                 <h4><a href="news.php" onclick="javascript: return confirm('確定返回最新消息?');" style="color: black;"><span class="fa fa-angle-left"></span>&nbsp;返回最新消息</a></h4>
-                <form method="post" action="update_function.php">
+                <form method="post" action="iud_func.php">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <?php
@@ -288,7 +288,7 @@
                             </div>
                             <input type="hidden" name="news_id" value="<?php echo $_GET['news_id']?>">
                             <div class="buttons">
-                                <input type="submit" onclick="javascript: return confirm('確認修改?');" class="site-btn" value="修改">
+                                <input type="submit" name="update_news" onclick="javascript: return confirm('確認修改?');" class="site-btn" value="修改">
                                 <button type="reset" class="site-btn" >取消</button>
                             </div>
                             <?php

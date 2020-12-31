@@ -52,7 +52,7 @@
 
 <body>
     <!-- Session -->
-    <?php include "session.php"; ?>
+    
     
     <!-- Page Preloder -->
     <div id="preloder">
@@ -256,7 +256,7 @@
         <div class="container">
             <div class="checkout__form">
                 <h4>註冊</h4>
-                <form method="post" action="register.php">
+                <form method="post" action="session.php">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="checkout__input">
@@ -269,11 +269,11 @@
                             </div>
                             <div class="checkout__input">
                                 <p>密碼<span>*</span></p>
-                                <input type="password" name="password1" required>
+                                <input type="password" name="user_psw" required>
                             </div>
                             <div class="checkout__input">
                                 <p>再次輸入密碼<span>*</span></p>
-                                <input type="password" name="password2" required>
+                                <input type="password" name="user_psw2" required>
                             </div>
                             <div class="buttons">
                                 <input type="submit" onclick="javascript: return confirm('確認註冊?');" class="site-btn" name="register" value="送出">
