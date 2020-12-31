@@ -228,7 +228,7 @@
     <!-- Hero Section End -->
 
     <!-- sierra 食譜 START -->
-    <section class="write_details write_content_pad">
+    <section class="write_details write_recipe_pad">
         <div class="container">
             <!-- sierra 寫新食譜 START -->
 

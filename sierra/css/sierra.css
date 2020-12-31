@@ -79,9 +79,14 @@
 
 /***   食譜步驟 START   ***/
 
+.write_recipe_pad {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #e9e1d4;
+}
+
 .step_button_bg {
     padding: 10px 30px 10px 30px;
-    background-color: antiquewhite;
     margin-bottom: 15px;
 }
 
@@ -102,7 +107,8 @@
 
 .step_input_bg1 {
     padding: 30px 30px 12px 30px;
-    background-color: cornflowerblue;
+    border-bottom: 3px solid #e9e1d4;
+    background-color: #fff;
 }
 
 .step_input_bg1 p {
@@ -111,14 +117,15 @@
 
 .write_step_input {
     border-radius: 5px;
-    border: none;
+    border: 1px solid darkgray;
     padding: 18px;
     margin-bottom: 18px;
 }
 
 .step_input_bg2 {
     padding: 30px;
-    background-color: aquamarine;
+    border-bottom: 3px solid #e9e1d4;
+    background-color: #fff;
 }
 
 .step_input_bg2 p {
@@ -143,7 +150,8 @@
 
 .step_input_bg3 {
     padding: 15px 30px;
-    background-color: cornflowerblue;
+    border-bottom: 3px solid #e9e1d4;
+    background-color: #fff;
 }
 
 .step_input_bg3 p {
@@ -152,7 +160,8 @@
 
 .step_input_bg4 {
     padding: 15px 30px;
-    background-color: antiquewhite;
+    border-bottom: 3px solid #e9e1d4;
+    background-color: #fff;
 }
 
 .step_input_bg4 p {
@@ -161,7 +170,8 @@
 
 .step_input_bg5 {
     padding: 15px 30px;
-    background-color: burlywood;
+    border-bottom: 3px solid #e9e1d4;
+    background-color: #fff;
 }
 
 .step_input_bg5 p {
@@ -170,7 +180,7 @@
 
 .write_step_input2 {
     border-radius: 5px;
-    border: none;
+    border: 1px solid darkgray;
     padding: 15px;
     margin-bottom: 15px;
 }
@@ -193,7 +203,7 @@
 
 .food_input {
     border-radius: 5px;
-    border: none;
+    border: 1px solid darkgray;
     padding: 15px;
     margin-bottom: 10px;
     width: 98%;
