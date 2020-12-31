@@ -50,10 +50,8 @@
     </style>
 </head>
 
-<body>
-    <!-- Session -->
-    
-    
+<body> 
+    <?php include 'session.php'; ?>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -256,16 +254,16 @@
         <div class="container">
             <div class="checkout__form">
                 <h4>註冊</h4>
-                <form method="post" action="session.php">
+                <form method="post" action="register.php">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="checkout__input">
                                 <p>姓名／暱稱<span>*</span></p>
-                                <input type="text" name="user_name" required>
+                                <input type="text" name="user_name" value="<?php echo $_GET['user_name']; ?>" required>
                             </div>
                             <div class="checkout__input">
                                 <p>帳號<span>*</span></p>
-                                <input type="text" name="user_email" required>
+                                <input type="text" name="user_email" value="<?php echo $_GET['user_email']; ?>" required>
                             </div>
                             <div class="checkout__input">
                                 <p>密碼<span>*</span></p>
@@ -276,7 +274,7 @@
                                 <input type="password" name="user_psw2" required>
                             </div>
                             <div class="buttons">
-                                <input type="submit" onclick="javascript: return confirm('確認註冊?');" class="site-btn" name="register" value="送出">
+                                <input type="submit" name="register" onclick="javascript: return confirm('確認註冊?');" class="site-btn" value="送出">
                                 <button type="reset" class="site-btn">取消</button>
                             </div>
                         </div>

@@ -52,7 +52,7 @@
 
 <body>
     <!-- Session -->
-    <?php include "session.php"; ?>
+    <?php include 'session.php'; ?>
     
     <!-- Page Preloder -->
     <div id="preloder">
@@ -265,7 +265,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>密碼<span>*</span></p>
-                                <input type="password" name="password" required>
+                                <input type="password" name="user_psw" required>
                             </div>
                             <div class="buttons">
                                 <input type="submit" class="site-btn" name="login" value="送出">
