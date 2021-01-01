@@ -306,7 +306,7 @@
                         $result1 = mysqli_query($db, $sql1);
                         if(mysqli_num_rows($result1) > 0){
                             ?>
-                            <a href="recipe_mylike_con.php?rec_id=<?php $recipe_id; ?>&user_email=<?php $user_email; ?>">
+                            <a href="recipe_mylike_con.php?rec_id=<?php echo $recipe_id; ?>&user_email=<?php echo $user_email; ?>&islike=1">
                                 <i class="fa fa-heart heart_icon fa-2x"></i>
                             </a>
                             
@@ -314,7 +314,7 @@
                         }
                         else{
                             ?>
-                            <a href="#" >
+                            <a href="recipe_mylike_con.php?rec_id=<?php echo $recipe_id; ?>&user_email=<?php echo $user_email; ?>&islike=0">
                                 <i class="fa fa-heart-o heart_icon fa-2x"></i>
                             </a>
                             
