@@ -107,7 +107,7 @@
 
 .step_input_bg1 {
     padding: 30px 30px 12px 30px;
-    border-bottom: 3px solid #e9e1d4;
+    border-bottom: 5px solid #e9e1d4;
     background-color: #fff;
 }
 
@@ -124,7 +124,7 @@
 
 .step_input_bg2 {
     padding: 30px;
-    border-bottom: 3px solid #e9e1d4;
+    border-bottom: 5px solid #e9e1d4;
     background-color: #fff;
 }
 
@@ -150,7 +150,7 @@
 
 .step_input_bg3 {
     padding: 15px 30px;
-    border-bottom: 3px solid #e9e1d4;
+    border-bottom: 5px solid #e9e1d4;
     background-color: #fff;
 }
 
@@ -160,7 +160,7 @@
 
 .step_input_bg4 {
     padding: 15px 30px;
-    border-bottom: 3px solid #e9e1d4;
+    border-bottom: 5px solid #e9e1d4;
     background-color: #fff;
 }
 
@@ -170,7 +170,7 @@
 
 .step_input_bg5 {
     padding: 15px 30px;
-    border-bottom: 3px solid #e9e1d4;
+    border-bottom: 5px solid #e9e1d4;
     background-color: #fff;
 }
 
@@ -332,7 +332,7 @@
 }
 
 .recipe_food_tr {
-    border-bottom: 2px solid #000;
+    border-bottom: 1px solid darkgray;
 }
 
 .recipe_food_td {
@@ -359,9 +359,22 @@
     text-align: center;
 }
 
-.recipe_food_tr p{
+.recipe_food_tr p {
     padding-top: 20px;
     padding-bottom: 5px;
     font-size: 20px;
 }
 
+.heart_icon {
+    margin-top: 10px;
+    color: #D42E2E;
+}
+
+.heart_icon:hover {
+    color: #D42E2E;
+}
+
+.heart_text {
+    margin-left: 10px;
+    font-size: 20px;
+}

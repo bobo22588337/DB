@@ -27,6 +27,25 @@
 </head>
 
 <body>
+   
+    <?php 
+    
+    include "db.php";
+    
+    #連 database
+    $db = db();
+    if(!$db){
+        echo "db_con_wrong";
+    }
+    
+    #連 user_email session
+    $user_email = user();
+    if(!$user_email){
+        header("location:#");
+    }
+    
+    ?>
+    
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -225,11 +244,6 @@
     <!-- Hero Section End -->
 
     <!-- sierra 食譜 START -->
-    <?php 
-    #user session 記得更改
-    $user_email = "sierra";
-    ?>
-
     <section class="write_details write_content_pad">
         <div class="container">
 
@@ -267,13 +281,7 @@
                         </p>
                     </div>
 
-
-
                     <?php
-                        $db = mysqli_connect("localhost", "root", "fish_870330", "dessert");
-                        if(!$db){
-                            echo "db_con_wrong";
-                        }
                         $sql1 = "SELECT * FROM recipe WHERE user_email='$user_email' AND rec_status='0' ORDER BY rec_date DESC";
                         $result1 = mysqli_query($db, $sql1);
                         if(mysqli_num_rows($result1) > 0){

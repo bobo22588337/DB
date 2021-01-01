@@ -28,6 +28,24 @@
 </head>
 
 <body>
+
+    <?php 
+    include "db.php";
+    
+    #連 database
+    $db = db();
+    if(!$db){
+        echo "db_con_wrong";
+    }
+    
+    #連 user_email session
+    $user_email = user();
+    if(!$user_email){
+        header("location:#");
+    }
+
+    ?>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -227,13 +245,6 @@
 
     <!-- 個人桌布圖 START -->
     <?php
-    $db = mysqli_connect("localhost", "root", "fish_870330", "dessert");
-    if(!$db){
-        echo "db_con_wrong";
-    }
-    
-    #user_email session,記得改
-    $user_email='sierra';
     
     $sql1 = "SELECT * FROM user WHERE user_email='$user_email'";
     $result1 = mysqli_query($db, $sql1);
@@ -303,181 +314,197 @@
                 # 食譜(已發布)
                 if($method == "publish"){
                     ?>
-                <div class="col-lg-8 col-md-7 user_bg">
-                    <div class="row">
-                        <div class="user_report_rec">
-                            <p>
-                                食譜
-                            </p>
-                        </div>
+                    <div class="col-lg-8 col-md-7 user_bg">
+                        <div class="row">
+                            <div class="user_report_rec">
+                                <p>
+                                    食譜
+                                </p>
+                            </div>
 
-                        <?php
-                                $sql2 = "SELECT * FROM recipe WHERE user_email='$user_email' AND rec_status='1' ORDER BY rec_date DESC";
-                                $result2 = mysqli_query($db, $sql2);
-                                if(mysqli_num_rows($result2) > 0){
-                                    while($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)){
-                                        ?>
-                                        <form enctype="multipart/form-data" action="recipe_new_con.php" method="post" class="user_report_border">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="unreport_form_image">
-                                                        <img src="<?php echo $row['rec_image']; ?>">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <div class="write_form">
-                                                        <p>
-                                                            <?php echo $row['rec_name']; ?>
-                                                        </p>
-
-                                                        <input type="hidden" name="rec_id" id="rec_id" value="<?php echo $row['rec_id']; ?>">
-
-                                                        <input type="submit" class="write_form_submit" value="查看食譜" name="list_publish_recipe">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <?php
-                                    }
-                                }
-                                else{
+                            <?php
+                            $sql2 = "SELECT * FROM recipe WHERE user_email='$user_email' AND rec_status='1' ORDER BY rec_date DESC";
+                            $result2 = mysqli_query($db, $sql2);
+                            if(mysqli_num_rows($result2) > 0){
+                                while($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)){
                                     ?>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="write_form">
-                                                <input type ="button" class="write_form_submit" onclick="javascript:location.href='recipe_new.php'" value="新增食譜">
+                                    <form enctype="multipart/form-data" action="recipe_new_con.php" method="post" class="user_report_border">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="unreport_form_image">
+                                                    <img src="<?php echo $row['rec_image']; ?>">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="write_form">
+                                                    <p>
+                                                        <?php echo $row['rec_name']; ?>
+                                                    </p>
+
+                                                    <input type="hidden" name="rec_id" id="rec_id" value="<?php echo $row['rec_id']; ?>">
+
+                                                    <input type="submit" class="write_form_submit" value="查看食譜" name="list_publish_recipe">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                     <?php
                                 }
+                            }
+                            else{
+                                ?>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="write_form">
+                                            <input type="button" class="write_form_submit" onclick="javascript:location.href='recipe_new.php'" value="新增食譜">
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
                             ?>
+                        </div>
                     </div>
-                </div>
-                <?php
+                    <?php
                 }
+                
+                    
+                
                 else if($method == "unpublish"){
                     ?>
-                <div class="col-lg-8 col-md-7 user_bg">
-                    <div class="row">
-                        <div class="user_report_rec">
-                            <p>
-                                草稿
-                            </p>
-                        </div>
+                    <div class="col-lg-8 col-md-7 user_bg">
+                        <div class="row">
+                            <div class="user_report_rec">
+                                <p>
+                                    草稿
+                                </p>
+                            </div>
 
-                        <?php
-                                $sql3 = "SELECT * FROM recipe WHERE user_email='$user_email' AND rec_status='0' ORDER BY rec_date DESC";
-                                $result3 = mysqli_query($db, $sql3);
-                                if(mysqli_num_rows($result3) > 0){
-                                    while($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)){
-                                        ?>
-                                        <form enctype="multipart/form-data" action="recipe_new_con.php" method="post" class="user_report_border">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="unreport_form_image">
-                                                        <img src="<?php echo $row['rec_image']; ?>">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-lg-6">
-                                                    <div class="write_form">
-                                                        <p>
-                                                            <?php echo $row['rec_name']; ?>
-                                                        </p>
-
-                                                        <input type="hidden" name="rec_id" id="rec_id" value="<?php echo $row['rec_id']; ?>">
-
-                                                        <input type="submit" class="write_form_submit" value="繼續寫食譜" name="list_unpublish_recipe">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <?php
-                                    }
-                                }
-                                else{
+                            <?php
+                            $sql3 = "SELECT * FROM recipe WHERE user_email='$user_email' AND rec_status='0' ORDER BY rec_date DESC";
+                            $result3 = mysqli_query($db, $sql3);
+                            if(mysqli_num_rows($result3) > 0){
+                                while($row = mysqli_fetch_array($result3, MYSQLI_ASSOC)){
                                     ?>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="write_form">
-                                                <input type ="button" class="write_form_submit" onclick="javascript:location.href='recipe_new.php'" value="新增食譜">
+                                    <form enctype="multipart/form-data" action="recipe_new_con.php" method="post" class="user_report_border">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="unreport_form_image">
+                                                    <img src="<?php echo $row['rec_image']; ?>">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="write_form">
+                                                    <p>
+                                                        <?php echo $row['rec_name']; ?>
+                                                    </p>
+
+                                                    <input type="hidden" name="rec_id" id="rec_id" value="<?php echo $row['rec_id']; ?>">
+
+                                                    <input type="submit" class="write_form_submit" value="繼續寫食譜" name="list_unpublish_recipe">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                     <?php
                                 }
+                            }
+                            else{
+                                ?>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="write_form">
+                                            <input type="button" class="write_form_submit" onclick="javascript:location.href='recipe_new.php'" value="新增食譜">
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
                             ?>
+                        </div>
                     </div>
-                </div>
-                <?php
+                    <?php
                 }
+                
+                
                 else if($method == "love"){
                     ?>
-                <div class="col-lg-8 col-md-7 user_bg">
-                    <div class="row">
-                        <div class="user_report_rec">
-                            <p>
-                                我的最愛
-                            </p>
-                        </div>
+                    <div class="col-lg-8 col-md-7 user_bg">
+                        <div class="row">
+                            <div class="user_report_rec">
+                                <p>
+                                    我的最愛
+                                </p>
+                            </div>
 
-                        <?php
-                                $sql4 = "SELECT * FROM mylike WHERE user_email='$user_email'";
-                                $result4 = mysqli_query($db, $sql4);
-                                if(mysqli_num_rows($result4) > 0){
-                                    while($row = mysqli_fetch_array($result4, MYSQLI_ASSOC)){
-                                        $recipe_id = $row['rec_id'];
-                                        
-                                        $sql5 = "SELECT * FROM recipe WHERE rec_id='$recipe_id' AND rec_status='1'";
-                                        $result5 = mysqli_query($db, $sql5);
-                                        if(mysqli_num_rows($result5) > 0){
-                                            while($row = mysqli_fetch_array($result5, MYSQLI_ASSOC)){
-                                                ?>
-                                                <form enctype="multipart/form-data" action="recipe_new_con.php" method="post" class="user_report_border">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="unreport_form_image">
-                                                                <img src="<?php echo $row['rec_image']; ?>">
-                                                            </div>
-                                                        </div>
+                            <?php
+                            $sql4 = "SELECT * FROM mylike WHERE user_email='$user_email'";
+                            $result4 = mysqli_query($db, $sql4);
+                            if(mysqli_num_rows($result4) > 0){
+                                while($row = mysqli_fetch_array($result4, MYSQLI_ASSOC)){
+                                    $recipe_id = $row['rec_id'];
 
-                                                        <div class="col-lg-6">
-                                                            <div class="write_form">
-                                                                <p>
-                                                                    <?php echo $row['rec_name']; ?>
-                                                                </p>
-
-                                                                <input type="hidden" name="rec_id" id="rec_id" value="<?php echo $row['rec_id']; ?>">
-
-                                                                <input type="submit" class="write_form_submit" value="前往食譜" name="list_mylove_recipe">
-                                                            </div>
+                                    $sql5 = "SELECT * FROM recipe WHERE rec_id='$recipe_id' AND rec_status='1'";
+                                    $result5 = mysqli_query($db, $sql5);
+                                    if(mysqli_num_rows($result5) > 0){
+                                        while($row = mysqli_fetch_array($result5, MYSQLI_ASSOC)){
+                                            ?>
+                                            <form enctype="multipart/form-data" action="recipe_new_con.php" method="post" class="user_report_border">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="unreport_form_image">
+                                                            <img src="<?php echo $row['rec_image']; ?>">
                                                         </div>
                                                     </div>
-                                                </form>
-                                                <?php
-                                            }
-                                        }
-                                        else{
-                                            ?>
-                                            <div class="row">
-                                                <div class="col-lg-12 write_form">
-                                                    <p>
-                                                        沒有食譜
-                                                    </p>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="write_form">
+                                                            <p>
+                                                                <?php echo $row['rec_name']; ?>
+                                                            </p>
+
+                                                            <input type="hidden" name="rec_id" id="rec_id" value="<?php echo $row['rec_id']; ?>">
+
+                                                            <input type="submit" class="write_form_submit" value="前往食譜" name="list_mylove_recipe">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </form>
                                             <?php
                                         }
                                     }
+                                    else{
+                                        ?>
+                                        <div class="row">
+                                            <div class="col-lg-12 write_form">
+                                                <p>
+                                                    沒有食譜
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
                                 }
+                            }
+                            else{
+                                ?>
+                                <div class="row">
+                                    <div class="col-lg-12 write_form">
+                                        <p>
+                                            沒有食譜
+                                        </p>
+                                    </div>
+                                </div>
+                                <?php
+                            }
                             ?>
+                        </div>
                     </div>
-                </div>
-                <?php
+                    <?php
                 }
                 ?>
 

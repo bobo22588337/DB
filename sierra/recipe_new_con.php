@@ -1,8 +1,11 @@
 <?php
-$db = mysqli_connect("localhost", "root", "fish_870330", "dessert");
+include "db.php";
+#連 database
+$db = db();
 if(!$db){
     echo "db_con_wrong";
 }
+
 
 #初始recipe_pic_path
 $origin_pic_path = 'pic/origin.JPG';
@@ -263,7 +266,7 @@ if(isset($_POST['rec_del'])){
 
 #取消按鈕
 if(isset($_POST['rec_cel'])){
-    header("location:recipe_new.php");
+    header("location:user_detail.php?method=unpublish");
 }
 
 #在recipe_publish.php發布後要修改,按修改
@@ -291,4 +294,10 @@ if(isset($_POST['list_mylove_recipe'])){
     $recipe_id = mysqli_real_escape_string($db, $_POST['rec_id']);
     header("location:recipe_detail.php?rec_id=$recipe_id");
 }
+
+if(isset($_POST['publish_rec_cel'])){
+    header("location:user_detail.php?method=publish");
+}
+
+
 ?>

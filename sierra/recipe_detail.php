@@ -27,6 +27,24 @@
 </head>
 
 <body>
+   
+    <?php 
+    include "db.php";
+    
+    #連資料庫
+    $db = db();
+    if(!$db){
+        echo "db_con_wrong";
+    }
+    
+    #連user_email session
+    $user_email = user();
+    if(!$user_email){
+        header("location:#");
+    }
+
+    ?>
+   
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -247,9 +265,6 @@
     <!-- 食譜詳細內容 START -->
     <?php
     
-    #user session,記得更改
-    $user_email = "sierra";
-            
     #接收從別的地方送來的rec_id
     if(isset($_GET['rec_id'])){
         $recipe_id = $_GET['rec_id'];
@@ -280,14 +295,39 @@
                 
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
+                        <!-- recipe_name -->
                         <h3><?php echo $recipe_name; ?></h3>
-                        <div class="product__details__rating">
-
-                        </div>
-                        <a href="#" class="heart-icon">
-                            <span class="icon_heart_alt"></span>
-                        </a>
-                        123123
+                        
+                        
+                        <!-- mylike -->
+                        <?php
+                        
+                        $sql1 = "SELECT * FROM mylike WHERE rec_id='$recipe_id' AND user_email='$user_email'";
+                        $result1 = mysqli_query($db, $sql1);
+                        if(mysqli_num_rows($result1) > 0){
+                            ?>
+                            <a href="recipe_mylike_con.php?rec_id=<?php $recipe_id; ?>&user_email=<?php $user_email; ?>">
+                                <i class="fa fa-heart heart_icon fa-2x"></i>
+                            </a>
+                            
+                            <?php    
+                        }
+                        else{
+                            ?>
+                            <a href="#" >
+                                <i class="fa fa-heart-o heart_icon fa-2x"></i>
+                            </a>
+                            
+                            <?php   
+                        }
+                        
+                        
+                        $sql2 = "SELECT COUNT(*) FROM mylike WHERE rec_id='$recipe_id'";
+                        $result2 = mysqli_query($db, $sql2);
+                        $row = mysqli_fetch_array($result2);
+                        $count = $row[0];
+                        ?>
+                        <span class="heart_text"><?php echo $count; ?></span>
                         
                         <ul>
                             <li>    
@@ -309,7 +349,7 @@
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">食材需求</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">Information</a>
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">步驟</a>
                             </li>
                         </ul>
                         

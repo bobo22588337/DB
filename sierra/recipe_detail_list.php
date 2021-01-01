@@ -1,9 +1,11 @@
 <?php
 function query($q){
-    $db = mysqli_connect("localhost", "root", "fish_870330", "dessert");
+    #include db.php $db
+    $db = db();
     if(!$db){
         echo "db_con_wrong";
     }
+    
     
     #接收從recipe_new_con傳送的recipe_id
     if(isset($_GET['rec_id'])){

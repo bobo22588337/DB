@@ -29,6 +29,19 @@
 </head>
 
 <body>
+    
+    
+    <?php 
+    
+    include "db.php";
+    
+    #連 user_email session
+    $user_email = user();
+    if(!$user_email){
+        header("location:#");
+    }
+    
+    ?>
 
     <!-- Page Preloder -->
     <div id="preloder">
@@ -232,10 +245,7 @@
         <div class="container">
             <!-- sierra 寫新食譜 START -->
 
-            <?php
-            #user session,記得更改
-            $user_email = "sierra";
-            
+            <?php            
             #接收從recipe_new_con.php送來的id
             if(isset($_GET['rec_id'])){
                 $recipe_id = $_GET['rec_id'];

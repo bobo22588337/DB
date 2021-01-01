@@ -29,6 +29,24 @@
 </head>
 
 <body>
+    
+    <?php 
+    include "db.php";
+    
+    #連 database
+    $db = db();
+    if(!$db){
+        echo "db_con_wrong";
+    }
+    
+    #連 user_email session
+    $user_email = user();
+    if(!$user_email){
+        header("location:#");
+    }
+
+    ?>
+    
 
     <!-- Page Preloder -->
     <div id="preloder">
@@ -233,8 +251,6 @@
             <!-- sierra 寫新食譜 START -->
 
             <?php
-            #user session,記得更改
-            $user_email = "sierra";
             
             #接收從recipe_new_con.php送來的id
             if(isset($_GET['rec_id'])){
@@ -302,6 +318,7 @@
                     <div class="col-lg-8 col-md-7 order-md-1 order-1">
                         <div class="step_button_bg">
                             <input class="write_step_submit" type="submit" value="修改" name="rec_update">
+                            <input class="write_step_submit" type="submit" value="取消" name="publish_rec_cel">
                             
                         </div>
 
