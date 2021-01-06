@@ -38,7 +38,7 @@
     #連 user_email session
     $user_email = user();
     if(empty($user_email)){
-        header("location:#");
+        header("location:../michelle/login.php");
     }
     
     ?>
