@@ -263,7 +263,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>帳號<span>*</span></p>
-                                <input type="text" name="user_email" value="<?php echo $_GET['user_email']; ?>" required>
+                                <input type="email" name="user_email" value="<?php echo $_GET['user_email']; ?>" required>
                             </div>
                             <div class="checkout__input">
                                 <p>密碼<span>*</span></p>
