@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -29,23 +30,23 @@
         }
         
         .buttons button {
-            background: #f2eee5;
-            color: black;
+            background: #e99883;
+            color: white;
         }
         
         .buttons button:hover {
-            background-color: black;
-            color: #f2eee5;
+            background-color: #e6866d;
+            color: white;
         }
         
         .buttons input {
-            background: #e5c1c5;
-            color: #f2eee5;
+            background: crimson;
+            color: white;
         }
         
         .buttons input:hover {
-            background-color: #f2eee5;
-            color: #e5c1c5;
+            background-color: firebrick;
+            color: white;
         }
     </style>
 </head>
@@ -179,7 +180,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__cart">
+                    <div clals="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>

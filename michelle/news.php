@@ -246,17 +246,12 @@
                             </thead>
                             <tbody>
                                 <?php 
-                                    //connect mysql
-                                    $con = mysql_connect('localhost', 'root', 'my880609');
-                                    if(!$con) {
-                                        echo 'not connect mysql';
-                                    }
-                                    mysql_query('set names utf8');
-                                    mysql_select_db('dessert', $con);
+                                    include('db_connection.php');
+                                    $con = db();
                                 
                                     $sql = 'SELECT * FROM news ORDER BY news_date DESC';
-                                    $rs = mysql_query($sql, $con);
-                                    while($record = mysql_fetch_row($rs)) {
+                                    $rs = mysqli_query($con, $sql);
+                                    while($record = mysqli_fetch_row($rs)) {
                                 ?>
                                 <tr>
                                     <td class="shoping__cart__item">
@@ -275,7 +270,7 @@
                                 </tr>
                                 <?php 
                                     }
-                                    mysql_close($con);      
+                                    mysqli_close($con);      
                                 ?> 
                             </tbody>
                         </table>

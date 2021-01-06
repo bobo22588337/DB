@@ -21,6 +21,13 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+    
+    <!-- hoverable hyperlink -->
+    <style type="text/css">
+        .checkout__form h4 a:hover {
+            background-color: #f2eee5;             
+        }
+    </style>
 </head>
 
 <body>
@@ -229,18 +236,13 @@
                 <div class="row">
                     <?php
                         $news_id = $_GET['news_id'];
-                        //connect mysql
-                        $con = mysql_connect('localhost', 'root', 'my880609');
-                        if(!$con) {
-                            echo 'not connect mysql';
-                        }
-                        mysql_query('set names utf8');
-                        mysql_select_db('dessert', $con);
+                        include('db_connection.php');
+                        $con = db();
                         
                         $sql = "SELECT * FROM news WHERE news_id = '$news_id'";
-                        $rs = mysql_query($sql, $con);
+                        $rs = mysqli_query($con, $sql);
                         
-                        while($record = mysql_fetch_row($rs))
+                        while($record = mysqli_fetch_row($rs))
                         {
                     ?>
                     <div class="col-lg-8 col-md-6">
@@ -264,7 +266,7 @@
                     </div>
                     <?php
                         }
-                        mysql_close($con);
+                        mysqli_close($con);
                     ?>
                 </div>
             </div>

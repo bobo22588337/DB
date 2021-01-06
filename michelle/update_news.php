@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -29,23 +30,23 @@
         }
         
         .buttons button {
-            background: #f2eee5;
-            color: black;
+            background: #e99883;
+            color: white;
         }
         
         .buttons button:hover {
-            background-color: black;
-            color: #f2eee5;
+            background-color: #e6866d;
+            color: white;
         }
         
         .buttons input {
-            background: #e5c1c5;
-            color: #f2eee5;
+            background: crimson;
+            color: white;
         }
         
         .buttons input:hover {
-            background-color: #f2eee5;
-            color: #e5c1c5;
+            background-color: firebrick;
+            color: white;
         }
     </style>
 
@@ -259,18 +260,13 @@
                         <div class="col-lg-8 col-md-6">
                             <?php
                                 $news_id = $_GET['news_id'];
-                                //connect mysql
-                                $con = mysql_connect('localhost', 'root', 'my880609');
-                                if(!$con) {
-                                    echo 'not connect mysql';
-                                }
-                                mysql_query('set names utf8');
-                                mysql_select_db('dessert', $con);
+                                include('db_connection.php');
+                                $con = db();
                             
                                 $sql = "SELECT * FROM news WHERE news_id = '$news_id'";
-                                $rs = mysql_query($sql, $con);
+                                $rs = mysqli_query($con, $sql);
                             
-                                while($record = mysql_fetch_row($rs))
+                                while($record = mysqli_fetch_row($rs))
                                 {
                             ?>
                             <div class="checkout__input">
@@ -292,7 +288,7 @@
                             </div>
                             <?php
                                 }
-                                mysql_close($con);
+                                mysqli_close($con);
                             ?>
                         </div>
                     </div>
