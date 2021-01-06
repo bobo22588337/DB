@@ -417,42 +417,33 @@
                             </div>
 
                             <?php
-                            $sql4 = "SELECT * FROM mylike WHERE user_email='$user_email'";
+                            $sql4 = "SELECT * FROM mylike l, recipe r WHERE l.user_email='$user_email' AND l.rec_id=r.rec_id AND r.rec_status='1'";
                             $result4 = mysqli_query($db, $sql4);
                             if(mysqli_num_rows($result4) > 0){
                                 while($row = mysqli_fetch_array($result4, MYSQLI_ASSOC)){
-                                    $recipe_id = $row['rec_id'];
-
-                                    $sql5 = "SELECT * FROM recipe WHERE rec_id='$recipe_id' AND rec_status='1'";
-                                    $result5 = mysqli_query($db, $sql5);
-                                    if(mysqli_num_rows($result5) > 0){
-                                        while($row = mysqli_fetch_array($result5, MYSQLI_ASSOC)){
-                                            ?>
-                                            <form enctype="multipart/form-data" action="recipe_new_con.php" method="post" class="user_report_border">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="unreport_form_image">
-                                                            <img src="<?php echo $row['rec_image']; ?>">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-lg-6">
-                                                        <div class="write_form">
-                                                            <p>
-                                                                <?php echo $row['rec_name']; ?>
-                                                            </p>
-
-                                                            <input type="hidden" name="rec_id" id="rec_id" value="<?php echo $row['rec_id']; ?>">
-
-                                                            <input type="submit" class="write_form_submit" value="前往食譜" name="list_mylove_recipe">
-                                                        </div>
-                                                    </div>
+                                    ?>
+                                    <form enctype="multipart/form-data" action="recipe_new_con.php" method="post" class="user_report_border">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="unreport_form_image">
+                                                    <img src="<?php echo $row['rec_image']; ?>">
                                                 </div>
-                                            </form>
-                                            <?php
-                                        }
-                                    }
-                                    
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="write_form">
+                                                    <p>
+                                                        <?php echo $row['rec_name']; ?>
+                                                    </p>
+
+                                                    <input type="hidden" name="rec_id" id="rec_id" value="<?php echo $row['rec_id']; ?>">
+
+                                                    <input type="submit" class="write_form_submit" value="前往食譜" name="list_mylove_recipe">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <?php
                                 }
                             }
                             else{
