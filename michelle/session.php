@@ -58,7 +58,7 @@
         $rs = mysqli_query($con, $sql);
         if (!empty(mysqli_fetch_row($rs))) {
             $_SESSION['user_email'] = $user_email;
-            header('location: ../index.html'); //位置待改
+            header('location: news.php');
         }
         else {
             echo "<script language='javascript'>alert('帳號密碼錯誤，請重新輸入！', location.href='login.php');</script>";

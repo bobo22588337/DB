@@ -22,30 +22,30 @@
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
     
-    <!-- hoverable buttons -->
+    <!-- hoverable hyperlink& buttons -->
     <style type="text/css">
-        .buttons {
-            background-color: white;
+        .checkout__form h4 a:hover {
+            background-color: #f2eee5;             
         }
         
         .buttons button {
-            background: #f2eee5;
-            color: black;
+            background: #e99883;
+            color: white;
         }
         
         .buttons button:hover {
-            background-color: black;
-            color: #f2eee5;
+            background-color: #e6866d;
+            color: white;
         }
         
         .buttons input {
-            background: #e5c1c5;
-            color: #f2eee5;
+            background: crimson;
+            color: white;
         }
         
         .buttons input:hover {
-            background-color: #f2eee5;
-            color: #e5c1c5;
+            background-color: firebrick;
+            color: white;
         }
     </style>
 </head>
@@ -266,6 +266,11 @@
                             <div class="checkout__input">
                                 <p>密碼<span>*</span></p>
                                 <input type="password" name="user_psw" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h6>還沒有帳號? <a href="register.php">前往註冊</a></h6>
+                                </div>
                             </div>
                             <div class="buttons">
                                 <input type="submit" class="site-btn" name="login" value="送出">
