@@ -40,7 +40,7 @@
     
     #連 user_email session
     $user_email = user();
-    if(!$user_email){
+    if(empty($user_email)){
         header("location:#");
     }
     

@@ -44,13 +44,13 @@
     border-radius: 5px;
     border: none;
     padding: 10px 15px;
-    background-color: #f1bcae;
-    color: dimgray;
+    background-color: #e99883;
+    color: white;
 }
 
 .write_form_submit:hover {
-    background-color: #430404;
-    color: azure;
+    background-color: #e6866d;
+    color: white;
 }
 
 .unreport_form_btn {
@@ -94,15 +94,31 @@
     border-radius: 5px;
     border: none;
     padding: 10px 15px;
-    background-color: aquamarine;
-    color: dimgray;
+    background-color: #e99883;
+    color: white;
     margin-right: 10px;
 
 }
 
 .write_step_submit:hover {
-    background-color: #430404;
-    color: azure;
+    background-color: #e6866d;
+    color: white;
+}
+
+
+.write_step_del {
+    border-radius: 5px;
+    border: none;
+    padding: 10px 15px;
+    background-color: crimson;
+    color: white;
+    margin-right: 10px;
+
+}
+
+.write_step_del:hover {
+    background-color: firebrick;
+    color: white;
 }
 
 .step_input_bg1 {
@@ -297,11 +313,11 @@
 }
 
 .user_sidebar_item ul li a:hover {
-    color: #7fad39;
+    color: #e6866d;
 }
 
 .user_sidebar_item ul li a.active {
-    color: #fff;
+    color: #e6866d;
 }
 
 .user_bg {

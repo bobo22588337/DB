@@ -37,7 +37,7 @@
     
     #連 user_email session
     $user_email = user();
-    if(!$user_email){
+    if(empty($user_email)){
         header("location:#");
     }
     
@@ -349,7 +349,7 @@
                         <div class="step_button_bg">
                             <input class="write_step_submit" type="submit" value="發布" name="rec_report">
                             <input class="write_step_submit" type="submit" value="儲存" name="rec_save">
-                            <input class="write_step_submit" type="submit" value="刪除" name="rec_del">
+                            <input class="write_step_del" type="submit" value="刪除" name="rec_del">
                             <input class="write_step_submit" type="submit" value="取消" name="rec_cel">
                         </div>
 

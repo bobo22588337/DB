@@ -40,7 +40,7 @@
     
     #連 user_email session
     $user_email = user();
-    if(!$user_email){
+    if(empty($user_email)){
         header("location:#");
     }
 
@@ -242,31 +242,6 @@
         </div>
     </section>
     <!-- Hero Section End -->
-
-    <!-- 個人桌布圖 START -->
-    <?php
-    
-    $sql1 = "SELECT * FROM user WHERE user_email='$user_email'";
-    $result1 = mysqli_query($db, $sql1);
-    if(mysqli_num_rows($result1) == 1){
-        $row = mysqli_fetch_array($result1, MYSQLI_ASSOC);
-        $user_name = $row['user_name'];
-    }
-    
-    ?>
-
-    <section class="username_section set-bg" data-setbg="img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>HI!&nbsp;&nbsp;&nbsp;<?php echo $user_name; ?></h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 個人桌布圖 END -->
 
     <?php
     
@@ -477,17 +452,7 @@
                                             <?php
                                         }
                                     }
-                                    else{
-                                        ?>
-                                        <div class="row">
-                                            <div class="col-lg-12 write_form">
-                                                <p>
-                                                    沒有食譜
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <?php
-                                    }
+                                    
                                 }
                             }
                             else{
