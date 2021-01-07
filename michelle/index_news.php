@@ -691,7 +691,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="blog__item__text">
-                                <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a> 
+                                <a href="news_user.php" class="blog__btn">READ MORE <span class="arrow_right"></span></a> 
                             </div>
                         </div>
                     </div>
