@@ -259,7 +259,10 @@
                         <div class="col-lg-8 col-md-6">
                             <div class="checkout__input">
                                 <p>作者<span>*</span></p>
-                                <input type="text" name="user_email" value="<?php echo $_SESSION['user_email']; ?>" required>
+                                <input type="text" name="user_email" value="<?php echo <?php 
+                                if (isset($_SESSION['user_email'])) {
+                                echo $_SESSION['user_email'];
+                                } ?>" required>
                             </div>
                             <div class="checkout__input">
                                 <p>標題<span>*</span></p>
