@@ -23,6 +23,7 @@
             echo "<script language='javascript'>alert('註冊成功!', location.href='../index.html');</script>"; //位置待改
 
             $_SESSION['user_email'] = $user_email;
+            $_SESSION['user_name'] = $user_name;
         }
         else
         {
@@ -46,6 +47,7 @@
             switch ($record[4]) {
             case 1:
                 $_SESSION['user_email'] = $user_email;
+                $_SESSION['user_name'] = $record[2];
                 header('location: ../index.html'); //位置待改
                 break;
             case 0:
@@ -56,8 +58,10 @@
         /************* administrator ************/
         $sql = "SELECT * FROM user WHERE user_email = '$user_email' AND user_psw = '$user_psw' AND identity = 'admin' AND status = 1";
         $rs = mysqli_query($con, $sql);
-        if (!empty(mysqli_fetch_row($rs))) {
+        $record = mysqli_fetch_row($rs);
+        if (!empty($record)) {
             $_SESSION['user_email'] = $user_email;
+            $_SESSION['user_name'] = $record[2];
             header('location: news.php');
         }
         else {

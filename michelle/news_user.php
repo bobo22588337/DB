@@ -248,7 +248,7 @@
                                     include('db_connection.php');
                                     $con = db();
                                 
-                                    $sql = 'SELECT * FROM news ORDER BY news_date DESC';
+                                    $sql = 'SELECT * FROM news, user WHERE news.user_email = user.user_email ORDER BY news_date DESC';
                                     $rs = mysqli_query($con, $sql);
                                     while($record = mysqli_fetch_row($rs)) {
                                 ?>
@@ -260,7 +260,7 @@
                                         <?php echo $record[3]?>
                                     </td>
                                     <td class="shoping__cart__">
-                                        <?php echo $record[4]?>
+                                        <?php echo $record[7]?>
                                     </td>
                                 </tr>
                                 <?php 

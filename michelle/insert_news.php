@@ -260,8 +260,8 @@
                             <div class="checkout__input">
                                 <p>作者<span>*</span></p>
                                 <input type="text" name="user_email" value="<?php 
-                                if (isset($_SESSION['user_email'])) {
-                                echo $_SESSION['user_email'];
+                                if (isset($_SESSION['user_name'])) {
+                                echo $_SESSION['user_name'];
                                 } ?>" required>
                             </div>
                             <div class="checkout__input">

@@ -239,7 +239,7 @@
                         include('db_connection.php');
                         $con = db();
                         
-                        $sql = "SELECT * FROM news WHERE news_id = '$news_id'";
+                        $sql = "SELECT * FROM news, user WHERE news.user_email = user.user_email AND news_id = '$news_id'";
                         $rs = mysqli_query($con, $sql);
                         
                         while($record = mysqli_fetch_row($rs))
@@ -249,7 +249,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
-                                    <p>作者：<?php echo $record[4]?></p>
+                                    <p>作者：<?php echo $record[7]?></p>
                                 </div>
                             </div>
                             <div class="col-lg-6">

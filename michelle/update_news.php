@@ -263,7 +263,7 @@
                                 include('db_connection.php');
                                 $con = db();
                             
-                                $sql = "SELECT * FROM news WHERE news_id = '$news_id'";
+                                $sql = "SELECT * FROM news, user WHERE news.user_email = user.user_email AND news_id = '$news_id'";
                                 $rs = mysqli_query($con, $sql);
                             
                                 while($record = mysqli_fetch_row($rs))
@@ -272,8 +272,8 @@
                             <div class="checkout__input">
                                 <p>作者</p>
                                 <input type="text" name="user_email" value="<?php 
-                                if (isset($_SESSION['user_email'])) {
-                                echo $_SESSION['user_email'];} else {echo $record[4]; } ?>">
+                                if (isset($_SESSION['user_name'])) {
+                                echo $_SESSION['user_name'];} else {echo $record[7]; } ?>">
                             </div>
                             <div class="checkout__input">
                                 <p>標題<span>*</span></p>
