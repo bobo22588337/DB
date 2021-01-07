@@ -64,6 +64,11 @@ function query($q){
                 $recipe_status = $row['rec_status'];
                 return $recipe_status;
             }
+            
+            if($q == "user_email"){
+                $user = $row['user_email'];
+                return $user;
+            }
            
         }
         
