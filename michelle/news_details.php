@@ -232,7 +232,19 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <h4><a href="news.php" style="color: black;"><span class="fa fa-angle-left"></span>&nbsp;返回最新消息</a></h4>
+                <?php
+                    if ($_GET['reader'] == 'user' && $_GET['loc'] == 'all') {
+                        $url = 'news_user.php';
+                    }
+                    else if ($_GET['reader'] == 'user' && $_GET['loc'] == 'index')
+                    {
+                        $url = 'index_news.php'; //改為首頁(位置待改
+                    }
+                    else {
+                        $url = 'news.php';
+                    }
+                ?>
+                <h4><a href=<?php echo $url; ?> style="color: black;"><span class="fa fa-angle-left"></span>&nbsp;返回最新消息</a></h4>
                 <div class="row">
                     <?php
                         $news_id = $_GET['news_id'];
