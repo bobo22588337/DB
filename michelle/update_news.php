@@ -271,7 +271,7 @@
                             ?>
                             <div class="checkout__input">
                                 <p>作者</p>
-                                <input type="text" name="user_email" value="<?php 
+                                <input type="text" name="user_name" value="<?php 
                                 if (isset($_SESSION['user_name'])) {
                                 echo $_SESSION['user_name'];} else {echo $record[7]; } ?>">
                             </div>
