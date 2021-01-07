@@ -279,6 +279,7 @@
     $food_name = query("food_name");
     $food_qty = query("food_qty");
     $recipe_step = query("recipe_step");
+    $user = query("user_email");
     
     ?>
 
@@ -296,12 +297,18 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <!-- recipe_name -->
-                        <h3><?php echo $recipe_name; ?></h3>
-                        
-                        
-                        <!-- mylike -->
+                        <h3><?php echo $recipe_name; ?></h3> 
+                        <!-- user_name -->
                         <?php
+                        $sql3 = "SELECT * FROM user WHERE user_email='$user'";
+                        $result3 = mysqli_query($db, $sql3);
+                        $row3 = mysqli_fetch_array($result3);
+                        $user_name = $row3['user_name'];
+                        ?>
+                        <p>by <?php echo $user_name; ?></p>
                         
+                        <!-- mylike START -->
+                        <?php
                         $sql1 = "SELECT * FROM mylike WHERE rec_id='$recipe_id' AND user_email='$user_email'";
                         $result1 = mysqli_query($db, $sql1);
                         if(mysqli_num_rows($result1) > 0){
@@ -328,14 +335,15 @@
                         $count = $row[0];
                         ?>
                         <span class="heart_text"><?php echo $count; ?></span>
-                        
+                        <!-- mylike END -->
+                       
                         <ul>
                             <li>    
                                 <b>份量(人份)</b> 
                                 <span><?php echo $recipe_qty; ?></span>
                             </li>
                             <li>
-                                <b>烹調時間</b> 
+                                <b>烹調時間(分鐘)</b> 
                                 <span><?php echo $recipe_cooktime; ?></span>
                             </li>
                         </ul>
