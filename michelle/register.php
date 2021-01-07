@@ -259,7 +259,7 @@
                         <div class="col-lg-8 col-md-6">
                             <div class="checkout__input">
                                 <p>姓名／暱稱<span>*</span></p>
-                                <input type="text" name="user_name" ?>" required>
+                                <input type="text" name="user_name" required>
                             </div>
                             <div class="checkout__input">
                                 <p>帳號<span>*</span></p>
