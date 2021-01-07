@@ -261,7 +261,7 @@
                                         <?php echo $record[3]?>
                                     </td>
                                     <td class="shoping__cart__">
-                                        <?php echo $record[4]?>
+                                        <?php echo $record[7]?>
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <a href="iud_func.php?news_id=<?php echo $record[0]?>&del_news=del_news" onclick="javascript: return confirm('確定刪除?');"><span class="icon_close"></span></a>
