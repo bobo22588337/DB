@@ -5,7 +5,7 @@ function db(){
 }
 
 function user(){
-    $_SESSION['user_email'] = $user_email;
+    $user_email = $_SESSION['user_email'];
     //$user_email = "sierra";
     return $user_email;
 }
