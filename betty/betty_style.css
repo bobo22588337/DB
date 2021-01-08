@@ -129,7 +129,7 @@ ol {
 	right: 0;
 	height: 4px;
 	width: 80px;
-	background: #7fad39;
+	background: #e6866d;
 	content: "";
 	margin: 0 auto;
 }
@@ -167,7 +167,7 @@ ol {
 	color: #ffffff;
 	text-transform: uppercase;
 	font-weight: 700;
-	background: #7fad39;
+    background: #f1bcae;
 	letter-spacing: 2px;
 }
 
@@ -178,7 +178,7 @@ ol {
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 13px 30px 12px;
-	background: #7fad39;
+	background: #e6866d;
 	border: none;
 }
 
@@ -399,7 +399,7 @@ ol {
 
 .header__top__right__auth a {
 	display: block;
-	font-size: 14px;
+	font-size: 20px;
 	color: #1c1c1c;
 }
 
@@ -517,7 +517,7 @@ ol {
 }
 
 .header__cart ul li a i {
-	font-size: 18px;
+	font-size: 20px;
 	color: #1c1c1c;
 }
 
@@ -643,7 +643,8 @@ ol {
 	height: 50px;
 	border: 1px solid #ebebeb;
 	position: relative;
-	float: left;
+    float: left;
+    margin-top: 20px;
 }
 
 .hero__search__form form .hero__search__categories {
@@ -738,12 +739,12 @@ ol {
 	text-transform: uppercase;
 	font-weight: 700;
 	letter-spacing: 4px;
-	color: #7fad39;
+	color: #f5ddad;
 }
 
 .hero__text h2 {
 	font-size: 46px;
-	color: #252525;
+	color: #fa6945;
 	line-height: 52px;
 	font-weight: 700;
 	margin: 10px 0;
@@ -993,13 +994,11 @@ ol {
 .latest-product__item__pic {
 	float: left;
 	margin-right: 26px;
-	height: 110px;
-	width: 110px;
 }
 
 .latest-product__item__pic img {
-	height: 100%;
-	width: 100%;
+	height: 110px;
+	width: 110px;
 }
 
 .latest-product__item__text {
