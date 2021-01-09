@@ -8,7 +8,7 @@ if(!$db){
 
 
 #初始recipe_pic_path
-$origin_pic_path = 'pic/origin.JPG';
+$origin_pic_path = '../sierra/pic/origin.JPG';
 $rec_path_text = $origin_pic_path;
 
 #user_id
@@ -150,8 +150,8 @@ if(isset($_POST['recipe_new_add'])){
 
     #判斷,recipe_new_detail,recipe_new_con
     if(!empty($pic_tmp)){
-        $pic_path = "pic/" .$pic_name;
-        move_uploaded_file($pic_name, $pic_path);
+        $pic_path = "../sierra/pic/" .$pic_name;
+        move_uploaded_file($pic_tmp, $pic_path);
         $rec_path_text = $pic_path;
     }
 
