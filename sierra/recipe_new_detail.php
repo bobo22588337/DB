@@ -349,8 +349,8 @@
                         <div class="step_button_bg">
                             <input class="write_step_submit" type="submit" value="發布" name="rec_report">
                             <input class="write_step_submit" type="submit" value="儲存" name="rec_save">
-                            <input class="write_step_del" type="submit" value="刪除" name="rec_del">
-                            <input class="write_step_submit" type="submit" value="取消" name="rec_cel">
+                            <input class="write_step_del" type="submit" value="刪除" name="rec_del" onclick="javascript: return confirm('確定要刪除嗎?');">
+                            <input class="write_step_submit" type="submit" value="取消" name="rec_cel"onclick="javascript: return confirm('確定要取消嗎?');">
                         </div>
 
                         <!-- 名稱 -->
@@ -540,7 +540,6 @@
         });
 
     </script>
-
 
 </body>
 
