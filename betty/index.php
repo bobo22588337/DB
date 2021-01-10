@@ -137,32 +137,32 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/sortpudding.png">
-                            <h5><a href="sort.php?">Pudding & Jelly</a></h5>
+                            <h5><a href="sort.php?method=布丁果凍">Pudding & Jelly</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/sortsweetsoup.jpg">
-                            <h5><a href="sort.php?">Sweet Soup</a></h5>
+                            <h5><a href="sort.php?method=甜湯">Sweet Soup</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/bread.jpg">
-                            <h5><a href="sort.php?">Bread</a></h5>
+                            <h5><a href="sort.php?method=麵包">Bread</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/chocolate.jpg">
-                            <h5><a href="sort.php?">Chocolate & Candy</a></h5>
+                            <h5><a href="sort.php?method=巧克力糖果">Chocolate & Candy</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/pancake.png">
-                            <h5><a href="sort.php?">Pancake</a></h5>
+                            <h5><a href="sort.php?method=鬆餅">Pancake</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/pie.jpg">
-                            <h5><a href="sort.php?">Pie</a></h5>
+                            <h5><a href="sort.php?method=塔派">Pie</a></h5>
                         </div>
                     </div>
                 </div>
@@ -171,54 +171,9 @@
     </section>
     <!-- Categories Section End -->
 
-    <!-- Blog Section Begin -->
+        <!-- Latest Product Section Begin -->
 
-    <section class="from-blog spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title from-blog__title">
-                        <h2>最新消息</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-        <!-- 連接資料庫 -->
-        <?php
-             include "sql.php";
-             $link = db();
-             if(!$link){
-                 echo "db_con_wrong";
-             }
-            $sql1 = 'SELECT * FROM dessert.news ORDER BY news_date DESC limit 3;';
-            $result = mysql_query($sql1);
-            while($row = mysql_fetch_row($result)){
-
-            
-        ?>
-            
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i><?php echo $row[3] ?></li>
-                            </ul>
-                            <h5><a href="#"><?php echo $row[1] ?></a></h5>
-                        </div>
-                    </div>
-                </div>
-            <?php
-            }
-            
-            ?>
-            </div>
-        </div>
-    </section>
-    <!-- Blog Section End -->
-
-    <!-- Latest Product Section Begin -->
-
-    <section class="latest-product spad">
+        <section class="latest-product spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
@@ -227,7 +182,11 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                             <?php
-                                
+                                include "sql.php";
+                                $link = db();
+                                if(!$link){
+                                    echo "db_con_wrong";
+                                }
                                 $sql2 = 'SELECT * FROM dessert.recipe ORDER BY rec_date DESC;';
                                 $result2 = mysql_query($sql2);
                                 while($row2 = mysql_fetch_row($result2)){
@@ -238,7 +197,6 @@
                                     </div>
                                     <div class="latest-product__item__text">
                                         <span><?php echo $row2[1] ?></span>
-                                        <h6>發布者 : <?php echo $row2[8] ?></h6>
                                     </div>
                                 </a>   
                            <?php
@@ -261,16 +219,15 @@
                             ?>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/latest-product/lp-1.jpg" alt="">
+                                        <img src="<?php echo $row2[2] ?>" alt="NO PIC">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
+                                        <span><?php echo $row2[1] ?></span>
                                     </div>
-                                </a>   
+                                </a>    
                            <?php
                             }
-                            mysql_close(db());
+                            
                             ?> 
                             </div>
                         </div>
@@ -280,6 +237,47 @@
         </div>
     </section>
     <!-- Latest Product Section End -->
+
+    <!-- Blog Section Begin -->
+
+    <section class="from-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title from-blog__title">
+                        <h2>最新消息</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+        <!-- 連接資料庫 -->
+        <?php
+             
+            $sql1 = 'SELECT * FROM dessert.news ORDER BY news_date DESC limit 3;';
+            $result = mysql_query($sql1);
+            while($row = mysql_fetch_row($result)){
+
+            
+        ?>
+            
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i><?php echo $row[3] ?></li>
+                            </ul>
+                            <h5><a href="#"><?php echo $row[1] ?></a></h5>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+            mysql_close(db());
+            ?>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section End -->
             
     <!-- Js Plugins -->
     <script src="../js/jquery-3.3.1.min.js"></script>

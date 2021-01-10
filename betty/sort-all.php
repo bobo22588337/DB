@@ -89,46 +89,7 @@
             </div>
         </div>
     </header>
-    <?php
-
-    $active1 = "";
-    $active2 = "";
-    $active3 = "";
-    $active4 = "";
-    $active5 = "";
-    $active6 = "";
-    $active7 = "";
-    $active8 = "";
-    $allactive = "";
-
-    if($_GET['method'] == "蛋糕"){
-        $filter = ".蛋糕";
-        $active1 = 'class="active"';
-    }elseif($_GET['method'] == "餅乾"){
-        $filter = ".餅乾";
-        $active2 = 'class="active"';
-    }elseif($_GET['method'] == "布丁果凍"){
-        $filter = ".布丁果凍";
-        $active3 = 'class="active"';
-    }elseif($_GET['method'] == "甜湯"){
-        $filter = ".甜湯";
-        $active4 = 'class="active"';
-    }elseif($_GET['method'] == "巧克力糖果"){
-        $filter = ".巧克力糖果";
-        $active5 = 'class="active"';
-    }elseif($_GET['method'] == "麵包"){
-        $filter = ".麵包";
-        $active6 = 'class="active"';
-    }elseif($_GET['method'] == "鬆餅"){
-        $filter = ".鬆餅";
-        $active7 = 'class="active"';
-    }elseif($_GET['method'] == "塔派"){
-        $filter = ".塔派";
-        $active8 = 'class="active"';
-    }else{
-        $filter = "";
-        $allactive = 'class="active"';}
-    ?>
+    
     <!-- Featured Section Begin -->
     <section class="featured spad">
         <div class="container">
@@ -140,15 +101,15 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li <?php echo $allactive ?> data-filter="*"><a href="sort-all.php" style="color:black;">All</a></li>
-                            <li <?php echo $active1 ?> data-filter=".蛋糕"><a href="sort.php?method=蛋糕" style="color:black;">Cake</a></li>
-                            <li <?php echo $active2 ?> data-filter=".餅乾"><a href="sort.php?method=餅乾" style="color:black;">Cookie</a></li>
-                            <li <?php echo $active3 ?> data-filter=".布丁果凍"><a href="sort.php?method=布丁果凍" style="color:black;">Pudding & Jelly</a></li>
-                            <li <?php echo $active4 ?> data-filter=".甜湯"><a href="sort.php?method=甜湯" style="color:black;">Sweet Soup</a></li>
-                            <li <?php echo $active5 ?> data-filter=".巧克力糖果"><a href="sort.php?method=巧克力糖果" style="color:black;">Chocolate & Candy</a></li>
-                            <li <?php echo $active6 ?> data-filter=".麵包"><a href="sort.php?method=麵包" style="color:black;">Bread</a></li>
-                            <li <?php echo $active7 ?> data-filter=".鬆餅"><a href="sort.php?method=鬆餅" style="color:black;">Pancake</a></li>
-                            <li <?php echo $active8 ?> data-filter=".塔派"><a href="sort.php?method=塔派" style="color:black;">Pie</a></li>
+                            <li class="active" data-filter="*"><a href="sort.php" style="color:black;">All</a></li>
+                            <li data-filter=".蛋糕"><a href="sort.php?method=蛋糕" style="color:black;">Cake</a></li>
+                            <li data-filter=".餅乾"><a href="sort.php?method=餅乾" style="color:black;">Cookie</a></li>
+                            <li data-filter=".布丁果凍"><a href="sort.php?method=布丁果凍" style="color:black;">Pudding & Jelly</a></li>
+                            <li data-filter=".甜湯"><a href="sort.php?method=甜湯" style="color:black;">Sweet Soup</a></li>
+                            <li data-filter=".巧克力糖果"><a href="sort.php?method=巧克力糖果" style="color:black;">Chocolate & Candy</a></li>
+                            <li data-filter=".麵包"><a href="sort.php?method=麵包" style="color:black;">Bread</a></li>
+                            <li data-filter=".鬆餅"><a href="sort.php?method=鬆餅" style="color:black;">Pancake</a></li>
+                            <li data-filter=".塔派"><a href="sort.php?method=塔派" style="color:black;">Pie</a></li>
                         </ul>
                     </div>
                 </div>
@@ -160,14 +121,13 @@
                 if(!$link){
                     echo "db_con_wrong";
                 }
-                $sort = $_GET['method'];
-                $sql = "SELECT * FROM dessert.recipe where rec_sort = '$sort'";
+                $sql = "SELECT * FROM dessert.recipe";
                 $result = mysql_query($sql);
                 while($row = mysql_fetch_row($result)){
 
             ?>
             
-                <div class="col-lg-3 col-md-4 col-sm-6 mix <?php echo $filter ?>">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix <?php echo $row[rec_sort] ?>">
                 
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="<?php echo $row[2] ?>">
