@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -29,23 +30,23 @@
         }
         
         .buttons button {
-            background: #f2eee5;
-            color: black;
+            background: #e99883;
+            color: white;
         }
         
         .buttons button:hover {
-            background-color: black;
-            color: #f2eee5;
+            background-color: #e6866d;
+            color: white;
         }
         
         .buttons input {
-            background: #e5c1c5;
-            color: #f2eee5;
+            background: crimson;
+            color: white;
         }
         
         .buttons input:hover {
-            background-color: #f2eee5;
-            color: #e5c1c5;
+            background-color: firebrick;
+            color: white;
         }
     </style>
 </head>
@@ -179,7 +180,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__cart">
+                    <div clals="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
@@ -258,7 +259,10 @@
                         <div class="col-lg-8 col-md-6">
                             <div class="checkout__input">
                                 <p>作者<span>*</span></p>
-                                <input type="text" name="user_email" value="<?php echo $_SESSION['user_email']; ?>" required>
+                                <input type="text" name="user_email" value="<?php 
+                                if (isset($_SESSION['user_name'])) {
+                                echo $_SESSION['user_name'];
+                                } ?>" required>
                             </div>
                             <div class="checkout__input">
                                 <p>標題<span>*</span></p>

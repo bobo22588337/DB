@@ -21,6 +21,13 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+    
+    <!-- hoverable hyperlink -->
+    <style type="text/css">
+        .checkout__form h4 a:hover {
+            background-color: #f2eee5;             
+        }
+    </style>
 </head>
 
 <body>
@@ -225,29 +232,36 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <h4><a href="news.php" style="color: black;"><span class="fa fa-angle-left"></span>&nbsp;返回最新消息</a></h4>
+                <?php
+                    if ($_GET['reader'] == 'user' && $_GET['loc'] == 'all') {
+                        $url = 'news_user.php';
+                    }
+                    else if ($_GET['reader'] == 'user' && $_GET['loc'] == 'index')
+                    {
+                        $url = 'index_news.php'; //改為首頁(位置待改
+                    }
+                    else {
+                        $url = 'news.php';
+                    }
+                ?>
+                <h4><a href=<?php echo $url; ?> style="color: black;"><span class="fa fa-angle-left"></span>&nbsp;返回最新消息</a></h4>
                 <div class="row">
                     <?php
                         $news_id = $_GET['news_id'];
-                        //connect mysql
-                        $con = mysql_connect('localhost', 'root', 'my880609');
-                        if(!$con) {
-                            echo 'not connect mysql';
-                        }
-                        mysql_query('set names utf8');
-                        mysql_select_db('dessert', $con);
+                        include('db_connection.php');
+                        $con = db();
                         
-                        $sql = "SELECT * FROM news WHERE news_id = '$news_id'";
-                        $rs = mysql_query($sql, $con);
+                        $sql = "SELECT * FROM news, user WHERE news.user_email = user.user_email AND news_id = '$news_id'";
+                        $rs = mysqli_query($con, $sql);
                         
-                        while($record = mysql_fetch_row($rs))
+                        while($record = mysqli_fetch_row($rs))
                         {
                     ?>
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
-                                    <p>作者：<?php echo $record[4]?></p>
+                                    <p>作者：<?php echo $record[7]?></p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -264,7 +278,7 @@
                     </div>
                     <?php
                         }
-                        mysql_close($con);
+                        mysqli_close($con);
                     ?>
                 </div>
             </div>

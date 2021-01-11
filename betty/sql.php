@@ -1,9 +1,8 @@
 <?php 
 
   function db(){
-    $link = mysql_connect("localhost","root","12345678");
-    mysql_select_db("dessert",$link);
-    mysql_query("SET NAMES UTF8");
+    $link = mysqli_connect("localhost","root","12345678", "dessert");
+    mysqli_query($link,"SET CHARACTER NAMES UTF8");
     return $link;
    
   }

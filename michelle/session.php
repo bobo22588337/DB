@@ -1,13 +1,8 @@
 <?php
     session_start();
-
-    //connect to mysql
-    $con = mysql_connect('localhost', 'root', 'my880609');
-    if(!$con) {
-        echo 'not connect mysql';
-    }
-    mysql_query('set names utf8');
-    mysql_select_db('dessert', $con); 
+    
+    include('db_connection.php');
+    $con = db();
     
     /************* register ************/
     if (isset($_POST['register'])) {
@@ -17,17 +12,18 @@
         $user_psw2 = $_POST['user_psw2'];
         
         $sql = "SELECT * FROM user WHERE user_email = '$user_email' LIMIT 1";
-        $rs = mysql_query($sql, $con);
+        $rs = mysqli_query($con, $sql);
         if ($user_psw != $user_psw2) {
             echo "<script language='javascript'>alert('密碼輸入不一致!請重新輸入!', location.href='register.php?user_email=$user_email&user_name=$user_name');</script>"; //位置待改
         }
-        else if (empty(mysql_fetch_row($rs))) {
+        else if (empty(mysqli_fetch_row($rs))) {
             $sql = "INSERT INTO user (user_email, user_psw, user_name, identity, status) VALUES ('$user_email', '$user_psw', '$user_name', 'user', 1)";
-            mysql_query($sql, $con);
+            mysqli_query($con, $sql);
 
-            echo "<script language='javascript'>alert('註冊成功!', location.href='../index.html');</script>"; //位置待改
+            echo "<script language='javascript'>alert('註冊成功!', location.href='../betty/index.php');</script>"; //位置待改
 
             $_SESSION['user_email'] = $user_email;
+            $_SESSION['user_name'] = $user_name;
         }
         else
         {
@@ -42,8 +38,8 @@
         
         /************* user ************/
         $sql = "SELECT * FROM user WHERE user_email = '$user_email' AND user_psw = '$user_psw' AND identity = 'user'";
-        $rs = mysql_query($sql, $con);
-        $record = mysql_fetch_row($rs);
+        $rs = mysqli_query($con, $sql);
+        $record = mysqli_fetch_row($rs);
         if(empty($record)) {
             echo "<script language='javascript'>alert('帳號密碼錯誤，請重新輸入！', location.href='login.php');</script>";
         }
@@ -51,7 +47,8 @@
             switch ($record[4]) {
             case 1:
                 $_SESSION['user_email'] = $user_email;
-                header('location: ../index.html'); //位置待改
+                $_SESSION['user_name'] = $record[2];
+                header('location: ../betty/index.php'); //位置待改
                 break;
             case 0:
                 echo "<script language='javascript'>alert('帳號已被停權', location.href='../index.html');</script>"; //位置待改
@@ -60,14 +57,14 @@
         }
         /************* administrator ************/
         $sql = "SELECT * FROM user WHERE user_email = '$user_email' AND user_psw = '$user_psw' AND identity = 'admin' AND status = 1";
-        $rs = mysql_query($sql, $con);
-        if (!empty(mysql_fetch_row($rs))) {
+        $rs = mysqli_query($con, $sql);
+        $record = mysqli_fetch_row($rs);
+        if (!empty($record)) {
             $_SESSION['user_email'] = $user_email;
-            header('location: ../index.html'); //位置待改
+            $_SESSION['user_name'] = $record[2];
+            header('location: news.php');
         }
         else {
             echo "<script language='javascript'>alert('帳號密碼錯誤，請重新輸入！', location.href='login.php');</script>";
         }
     }
-    mysql_close($con);
-?>

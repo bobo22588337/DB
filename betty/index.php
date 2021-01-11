@@ -195,21 +195,23 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                             <?php
-                                $sql2 = 'SELECT * FROM dessert.recipe ORDER BY rec_date DESC';
-                                $result2 = mysql_query($sql2);
-                                while($row2 = mysql_fetch_row($result2)){
-                            ?>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="<?php echo $row2[2] ?>" alt="NO PIC">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <span><?php echo $row2[1] ?></span>
-                                    </div>
-                                </a>   
-                           <?php
-                            }
-                            
+                                $sql2 = 'SELECT * FROM recipe ORDER BY rec_date DESC';
+                                $result2 = mysqli_query($link, $sql2);
+                                if(mysqli_num_rows($result2) > 0){
+                                    while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)){
+                                        ?>
+                                            <a href="#" class="latest-product__item">
+                                                <div class="latest-product__item__pic">
+                                                    <img src="<?php echo $row2['rec_image']; ?>" alt="NO PIC">
+                                                </div>
+                                                <div class="latest-product__item__text">
+                                                    <span><?php echo $row2['rec_name']; ?></span>
+                                                </div>
+                                            </a>   
+                                       <?php
+                                        }
+                                }
+                                
                             ?> 
                             </div>
                         </div>                        
@@ -221,22 +223,26 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                             <?php
-                                $sql2 = 'SELECT * FROM dessert.recipe r,dessert.mylike m where r.rec_id=m.rec_id group by m.rec_id
-                                having count(m.rec_id) order by m.rec_id';
-                                $result2 = mysql_query($sql2);
-                                while($row2 = mysql_fetch_row($result2)){
-                            ?>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="<?php echo $row2[2] ?>" alt="NO PIC">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <span><?php echo $row2[1] ?></span>
-                                    </div>
-                                </a>    
-                           <?php
-                            }
-                            
+                                $sql3 = 'SELECT m.rec_id, rec_name, rec_image, COUNT(m.rec_id) as rec_count FROM recipe r, mylike m where r.rec_id=m.rec_id group by m.rec_id order by rec_count DESC';
+                                $result3 = mysqli_query($link, $sql3);
+                                if(mysqli_num_rows($result3) > 0){
+                                    while($row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC)){
+                                    ?>
+                                        <a href="#" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="<?php echo $row3['rec_image']; ?>">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <span><?php echo $row3['rec_name']; ?></span>
+                                            </div>
+                                        </a>    
+                                   <?php
+                                    }
+                                }
+                                else{
+                                    echo "nothing";
+                                }
+                           
                             ?> 
                             </div>
                         </div>
@@ -263,8 +269,8 @@
         <?php
              
             $sql1 = 'SELECT * FROM dessert.news ORDER BY news_date DESC limit 3;';
-            $result = mysql_query($sql1);
-            while($row = mysql_fetch_row($result)){
+            $result = mysqli_query($link, $sql1);
+            while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 
             
         ?>
@@ -273,15 +279,15 @@
                     <div class="blog__item">
                         <div class="blog__item__text">
                             <ul>
-                                <li><i class="fa fa-calendar-o"></i><?php echo $row[3] ?></li>
+                                <li><i class="fa fa-calendar-o"></i><?php echo $row['news_date'] ?></li>
                             </ul>
-                            <h5><a href="#"><?php echo $row[1] ?></a></h5>
+                            <h5><a href="#"><?php echo $row['news_title'] ?></a></h5>
                         </div>
                     </div>
                 </div>
             <?php
             }
-            mysql_close(db());
+            mysqli_close($link);
             ?>
             </div>
         </div>

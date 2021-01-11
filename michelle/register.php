@@ -22,30 +22,30 @@
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
     
-    <!-- hoverable buttons -->
+    <!-- hoverable hyperlink& buttons -->
     <style type="text/css">
-        .buttons {
-            background-color: white;
+        .checkout__form h4 a:hover {
+            background-color: #f2eee5;             
         }
         
         .buttons button {
-            background: #f2eee5;
-            color: black;
+            background: #e99883;
+            color: white;
         }
         
         .buttons button:hover {
-            background-color: black;
-            color: #f2eee5;
+            background-color: #e6866d;
+            color: white;
         }
         
         .buttons input {
-            background: #e5c1c5;
-            color: #f2eee5;
+            background: crimson;
+            color: white;
         }
         
         .buttons input:hover {
-            background-color: #f2eee5;
-            color: #e5c1c5;
+            background-color: firebrick;
+            color: white;
         }
     </style>
 </head>
@@ -259,11 +259,11 @@
                         <div class="col-lg-8 col-md-6">
                             <div class="checkout__input">
                                 <p>姓名／暱稱<span>*</span></p>
-                                <input type="text" name="user_name" value="<?php echo $_GET['user_name']; ?>" required>
+                                <input type="text" name="user_name" required>
                             </div>
                             <div class="checkout__input">
                                 <p>帳號<span>*</span></p>
-                                <input type="text" name="user_email" value="<?php echo $_GET['user_email']; ?>" required>
+                                <input type="email" name="user_email" required>
                             </div>
                             <div class="checkout__input">
                                 <p>密碼<span>*</span></p>
@@ -272,6 +272,11 @@
                             <div class="checkout__input">
                                 <p>再次輸入密碼<span>*</span></p>
                                 <input type="password" name="user_psw2" required>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h6>已有帳號? <a href="login.php">前往登入</a></h6>
+                                </div>
                             </div>
                             <div class="buttons">
                                 <input type="submit" name="register" onclick="javascript: return confirm('確認註冊?');" class="site-btn" value="送出">

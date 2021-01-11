@@ -241,7 +241,6 @@
                                     <th class="shoping__product">標題</th>
                                     <th>日期</th>
                                     <th>作者</th>
-                                    <th><a href="insert_news.php" style="color:black;"><span class="fa fa-plus"></span></a></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -249,23 +248,19 @@
                                     include('db_connection.php');
                                     $con = db();
                                 
-                                    $sql = 'SELECT * FROM news , user WHERE news.user_email = user.user_email ORDER BY news_date DESC';
+                                    $sql = 'SELECT * FROM news, user WHERE news.user_email = user.user_email ORDER BY news_date DESC';
                                     $rs = mysqli_query($con, $sql);
                                     while($record = mysqli_fetch_row($rs)) {
                                 ?>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <a href="news_details.php?news_id=<?php echo $record[0]?>"><h5><?php echo $record[1]?></h5></a>
+                                        <a href="news_details.php?news_id=<?php echo $record[0]?>&reader=user&loc=all"><h5><?php echo $record[1]?></h5></a>
                                     </td>
                                     <td class="shoping__cart__">
                                         <?php echo $record[3]?>
                                     </td>
                                     <td class="shoping__cart__">
                                         <?php echo $record[7]?>
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <a href="iud_func.php?news_id=<?php echo $record[0]?>&del_news=del_news" onclick="javascript: return confirm('確定刪除?');"><span class="icon_close"></span></a>
-                                        <a href="update_news.php?news_id=<?php echo $record[0]?>"><span class="fa fa-edit"></span></a>
                                     </td>
                                 </tr>
                                 <?php 

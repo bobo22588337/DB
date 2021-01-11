@@ -1,14 +1,11 @@
 <?php
-    $user_email = $_SESSION['user_email'];
-
-    //connect to mysql
-    $con = mysql_connect('localhost', 'root', 'my880609');
-    if(!$con) {
-        echo 'not connect mysql';
-    }
-    mysql_query('set names utf8');
-    mysql_select_db('dessert', $con);  
+    session_start();
     
+    $user_email = $_SESSION['user_email'];
+    
+    include('db_connection.php');
+    $con = db();
+
     /************* insert news ************/
     if (isset($_POST['insert_news'])) {
         $news_title = $_POST['news_title'];
@@ -16,22 +13,24 @@
         if($user_email != '' && $news_title != '' && $news_content != '')
         {
             $sql = "INSERT INTO news (user_email, news_title, news_content) VALUES ('$user_email', '$news_title', '$news_content')";
-            mysql_query($sql, $con);
+            
+            mysqli_query($con, $sql);
 
             header('location: news.php');
         }
     }
     /************* update news ************/
     if (isset($_POST['update_news'])) {
+        $user_name = $_POST['user_name'];
         $news_id = $_POST['news_id'];
         $news_title = $_POST['news_title'];
         $news_content = $_POST['news_content'];
         
         if($news_title != '' && $news_content != '')
         {
-            $sql = "update news set news_date = NOW(), user_email = '$user_email', news_title = '$news_title', news_content = '$news_content' where news_id = '$news_id'";
+            $sql = "update news set news_date = NOW(), user_name = '$user_name', news_title = '$news_title', news_content = '$news_content' where news_id = '$news_id'";
 
-            mysql_query($sql, $con);
+            mysqli_query($con, $sql);
 
             header("location: news.php");
         }
@@ -42,10 +41,9 @@
         $news_id = $_GET['news_id'];
         
         $sql = "DELETE FROM news WHERE news_id = $news_id";
-        mysql_query($sql, $con);
+        mysqli_query($con, $sql);
         
         header('location: news.php');
     }
-    
-    mysql_close($con);
+    mysqli_close($con);
 ?>
