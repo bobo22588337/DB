@@ -1,6 +1,6 @@
 <?php 
 function db(){
-    $db = mysqli_connect("localhost", "root", "12345678", "dessert");
+    $db = mysqli_connect("localhost", "root", "fish_870330", "dessert");
     return $db;
 }
 
