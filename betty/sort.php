@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
-   <!-- <link rel="stylesheet" href="../css/style.css" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="../css/style.css" type="text/css"> -->
 
     <link rel="stylesheet" href="betty_style.css" type="text/css">
 </head>
@@ -29,49 +29,18 @@
     <?php
     include "sql.php";
     $link = db();
-    if(!$link){
-        echo "db_con_wrong";
-    }
     #連 user_email session
     $user_email = user();
     
+    include "header.php";
+    if(!empty($user_email)){
+        head("islogin");
+    }
+    else{
+        head("nologin");
+    }
+    
     ?>
-    <!-- Page Preloder
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>-->
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="../betty/index.php"><img src="../img/dessert.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-                        </ul>
-                        <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
     <?php
 
     $active1 = "";
@@ -108,7 +77,7 @@
     }elseif($_GET['method'] == "塔派"){
         $filter = ".塔派";
         $active8 = 'class="active"';
-    }else{
+    }elseif($_GET['method'] == "全部"){
         $filter = "";
         $allactive = 'class="active"';}
     ?>
@@ -123,7 +92,7 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li <?php echo $allactive ?> data-filter="*"><a href="sort-all.php" style="color:black;">全部</a></li>
+                            <li <?php echo $allactive ?> data-filter="*"><a href="sort.php?method=全部" style="color:black;">全部</a></li>
                             <li <?php echo $active1 ?> data-filter=".蛋糕"><a href="sort.php?method=蛋糕" style="color:black;">蛋糕</a></li>
                             <li <?php echo $active2 ?> data-filter=".餅乾"><a href="sort.php?method=餅乾" style="color:black;">餅乾</a></li>
                             <li <?php echo $active3 ?> data-filter=".布丁果凍"><a href="sort.php?method=布丁果凍" style="color:black;">布丁&果凍</a></li>
@@ -137,35 +106,64 @@
                 </div>
             </div>
             <div class="row featured__filter">
-            <?php
-                $sort = $_GET['method'];
-                $sql = "SELECT * FROM recipe r,user u where rec_sort = '$sort' and r.user_email = u.user_email";
-                $result = mysqli_query($link,$sql);
-                if(mysqli_num_rows($result)>0){
-                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-
-            ?>
-            
-                <div class="col-lg-3 col-md-4 col-sm-6 mix <?php echo $filter ?>">
-                
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="<?php echo $row['rec_image'] ?>">
-                        </div>
-                        <div class="featured__item__text">
-                            <span><a href="../sierra/recipe_detail.php?rec_id=<?php echo $row['rec_id']?>" style="color:black;"><?php echo $row['rec_name'] ?></a></span>
-                            <h6>作者:<?php echo $row['user_name'] ?></h6>
-                            
-                        </div>
-                    </div>
-                </div>
                 <?php
+                $sort = $_GET['method'];
+                if($sort == "全部"){
+                    $sql1 = "SELECT * FROM recipe r,user u where r.user_email = u.user_email";
+                    $result1 = mysqli_query($link, $sql1);
+                    if(mysqli_num_rows($result1) > 0){
+                        while($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)){
+
+                            ?>
+
+                            <div class="col-lg-3 col-md-4 col-sm-6 mix <?php echo $filter ?>">
+
+                                <div class="featured__item">
+                                    <div class="featured__item__pic set-bg" data-setbg="<?php echo $row1['rec_image'] ?>">
+                                    </div>
+                                    <div class="featured__item__text">
+                                        <h6>
+                                            <a href="../sierra/recipe_detail.php?rec_id=<?php echo $row1['rec_id']?>"><?php echo $row1['rec_name'] ?>
+                                            </a>
+                                        </h6>
+                                        <h6>作者:<?php echo $row1['user_name'] ?></h6>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }   
+                    }
                 }
-            }
+                else{
+                    $sql = "SELECT * FROM recipe r,user u where rec_sort = '$sort' and r.user_email = u.user_email";
+                    $result = mysqli_query($link,$sql);
+                    if(mysqli_num_rows($result)>0){
+                        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+
+                            ?>
+
+                            <div class="col-lg-3 col-md-4 col-sm-6 mix <?php echo $filter ?>">
+
+                                <div class="featured__item">
+                                    <div class="featured__item__pic set-bg" data-setbg="<?php echo $row['rec_image'] ?>">
+                                    </div>
+                                    <div class="featured__item__text">
+                                        <h6><a href="../sierra/recipe_detail.php?rec_id=<?php echo $row['rec_id']?>"><?php echo $row['rec_name'] ?></a></h6>
+                                        <h6>作者:<?php echo $row['user_name'] ?></h6>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                }
                 mysqli_close($link);
-                ?> 
+                ?>
             </div>
         </div>
-        
+
     </section>
     <!-- Featured Section End -->
 
