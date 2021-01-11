@@ -129,7 +129,7 @@
                                 if(mysqli_num_rows($result2) > 0){
                                     while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)){
                                         ?>
-                                            <a href="#" class="latest-product__item">
+                                            <a href="../sierra/recipe_detail.php?rec_id=<?php echo $row2['rec_id']?>" class="latest-product__item">
                                                 <div class="latest-product__item__pic">
                                                     <img src="<?php echo $row2['rec_image']; ?>" alt="NO PIC">
                                                 </div>
@@ -158,7 +158,7 @@
                                 if(mysqli_num_rows($result3) > 0){
                                     while($row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC)){
                                     ?>
-                                        <a href="#" class="latest-product__item">
+                                        <a href="../sierra/recipe_detail.php?rec_id=<?php echo $row3['rec_id']?>" class="latest-product__item">
                                             <div class="latest-product__item__pic">
                                                 <img src="<?php echo $row3['rec_image']; ?>">
                                             </div>

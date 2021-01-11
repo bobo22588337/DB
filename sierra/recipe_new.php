@@ -31,7 +31,7 @@
    
     <?php 
     
-    include "db.php";
+    include "../betty/sql.php";
     include "../betty/header.php";
     
     #連 database

@@ -34,6 +34,7 @@
 
 <body>
     <?php
+    header("Content-Type:text/html; charset=utf-8");
     include "../betty/sql.php";
     include "../betty/header.php";
     $user_email=user();

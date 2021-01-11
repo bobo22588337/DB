@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../betty/sql.php";
 #連 database
 $db = db();
 if(!$db){
