@@ -64,7 +64,7 @@
                                 ?>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <a href="news_details.php?news_id=<?php echo $record[0]?>"><h5><?php echo $record[1]?></h5></a>
+                                        <a href="news_details.php?news_id=<?php echo $record[0]?>&reader=admin"><h5><?php echo $record[1]?></h5></a>
                                     </td>
                                     <td class="shoping__cart__">
                                         <?php echo $record[3]?>
