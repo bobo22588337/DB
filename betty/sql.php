@@ -3,8 +3,7 @@
   function db(){
     $link = mysqli_connect("localhost","root","12345678", "dessert");
     mysqli_query($link,"SET NAMES 'utf8'");
-    return $link;
-   
+    return $link; 
   }
   
   function user(){

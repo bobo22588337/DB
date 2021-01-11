@@ -34,38 +34,12 @@
     }
     #連 user_email session
     $user_email = user();
-    if(empty($user_email)){
-    header("location:../michelle/login.php");
-    }
+    
     ?>
-    <!-- Page Preloder -->
+    <!-- Page Preloder
     <div id="preloder">
         <div class="loader"></div>
-    </div>
-
-    <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="../img/dessert.png" alt=""></a>
-        </div>        
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./betty/index.php">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-    </div>
-    <!-- Humberger End -->
+    </div>-->
 
     <!-- Header Section Begin -->
     <header class="header">
@@ -95,9 +69,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
             </div>
         </div>
     </header>
@@ -168,27 +139,29 @@
             <div class="row featured__filter">
             <?php
                 $sort = $_GET['method'];
-                $sql = "SELECT * FROM dessert.recipe where rec_sort = '$sort'";
-                $result = mysql_query($sql);
-                while($row = mysql_fetch_row($result)){
+                $sql = "SELECT * FROM recipe r,user u where rec_sort = '$sort' and r.user_email = u.user_email";
+                $result = mysqli_query($link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 
             ?>
             
                 <div class="col-lg-3 col-md-4 col-sm-6 mix <?php echo $filter ?>">
                 
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="<?php echo $row[2] ?>">
+                        <div class="featured__item__pic set-bg" data-setbg="<?php echo $row['rec_image'] ?>">
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#"><?php echo $row[1] ?></a></h6>
-                            <h6><?php echo $row[8] ?></h6>
+                            <h6><a href="../sierra/recipe_detail.php?rec_id=<?php echo $row['rec_id']?>"><?php echo $row['rec_name'] ?></a></h6>
+                            <h6>作者:<?php echo $row['user_name'] ?></h6>
                             
                         </div>
                     </div>
                 </div>
                 <?php
                 }
-                mysql_close(db());
+            }
+                mysqli_close($link);
                 ?> 
             </div>
         </div>

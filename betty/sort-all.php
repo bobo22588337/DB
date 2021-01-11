@@ -38,10 +38,10 @@
     header("location:../michelle/login.php");
     }
     ?>
-    <!-- Page Preloder -->
+    <!-- Page Preloder
     <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div>-->
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
@@ -113,15 +113,15 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li <?php echo $allactive ?> data-filter="*"><a href="sort-all.php" style="color:black;">全部</a></li>
-                            <li <?php echo $active1 ?> data-filter=".蛋糕"><a href="sort.php?method=蛋糕" style="color:black;">蛋糕</a></li>
-                            <li <?php echo $active2 ?> data-filter=".餅乾"><a href="sort.php?method=餅乾" style="color:black;">餅乾</a></li>
-                            <li <?php echo $active3 ?> data-filter=".布丁果凍"><a href="sort.php?method=布丁果凍" style="color:black;">布丁&果凍</a></li>
-                            <li <?php echo $active4 ?> data-filter=".甜湯"><a href="sort.php?method=甜湯" style="color:black;">甜湯</a></li>
-                            <li <?php echo $active5 ?> data-filter=".巧克力糖果"><a href="sort.php?method=巧克力糖果" style="color:black;">巧克力&糖果</a></li>
-                            <li <?php echo $active6 ?> data-filter=".麵包"><a href="sort.php?method=麵包" style="color:black;">麵包</a></li>
-                            <li <?php echo $active7 ?> data-filter=".鬆餅"><a href="sort.php?method=鬆餅" style="color:black;">鬆餅</a></li>
-                            <li <?php echo $active8 ?> data-filter=".塔派"><a href="sort.php?method=塔派" style="color:black;">塔派</a></li>
+                            <li class='active' data-filter="*"><a href="sort-all.php" style="color:black;">全部</a></li>
+                            <li data-filter=".蛋糕"><a href="sort.php?method=蛋糕" style="color:black;">蛋糕</a></li>
+                            <li data-filter=".餅乾"><a href="sort.php?method=餅乾" style="color:black;">餅乾</a></li>
+                            <li data-filter=".布丁果凍"><a href="sort.php?method=布丁果凍" style="color:black;">布丁&果凍</a></li>
+                            <li data-filter=".甜湯"><a href="sort.php?method=甜湯" style="color:black;">甜湯</a></li>
+                            <li data-filter=".巧克力糖果"><a href="sort.php?method=巧克力糖果" style="color:black;">巧克力&糖果</a></li>
+                            <li data-filter=".麵包"><a href="sort.php?method=麵包" style="color:black;">麵包</a></li>
+                            <li data-filter=".鬆餅"><a href="sort.php?method=鬆餅" style="color:black;">鬆餅</a></li>
+                            <li data-filter=".塔派"><a href="sort.php?method=塔派" style="color:black;">塔派</a></li>
                         </ul>
                     </div>
                 </div>
@@ -129,26 +129,30 @@
             <div class="row featured__filter">
             <?php
                 $sql = "SELECT * FROM dessert.recipe";
-                $result = mysql_query($sql);
-                while($row = mysql_fetch_row($result)){
+                $result = mysqli_query($link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 
             ?>
             
-                <div class="col-lg-3 col-md-4 col-sm-6 mix <?php echo $row[rec_sort] ?>">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix <?php echo $row['rec_sort'] ?>">
                 
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="<?php echo $row[2] ?>">
+                        <div class="featured__item__pic set-bg" data-setbg="<?php echo $row['rec_image'] ?>">
+                        <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#"><?php echo $row[1] ?></a></h6>
-                            <h6><?php echo $row[8] ?></h6>
-                            
+                            <h6><a href="#"><?php echo $row['rec_name'] ?></a></h6>
+                            <h6><?php echo $row[8] ?></h6>   
                         </div>
                     </div>
                 </div>
                 <?php
                 }
-                mysql_close(db());
+            }
+                mysqli_close($link);
                 ?> 
             </div>
         </div>
