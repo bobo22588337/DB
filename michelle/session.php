@@ -22,6 +22,7 @@
 
             echo "<script language='javascript'>alert('註冊成功!', location.href='../betty/index.php');</script>"; //位置待改
 
+
             $_SESSION['user_email'] = $user_email;
             $_SESSION['user_name'] = $user_name;
         }
@@ -48,7 +49,9 @@
             case 1:
                 $_SESSION['user_email'] = $user_email;
                 $_SESSION['user_name'] = $record[2];
+
                 header('location: ../betty/index.php'); //位置待改
+
                 break;
             case 0:
                 echo "<script language='javascript'>alert('帳號已被停權', location.href='../index.html');</script>"; //位置待改
