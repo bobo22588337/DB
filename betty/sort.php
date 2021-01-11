@@ -152,7 +152,7 @@
                         <div class="featured__item__pic set-bg" data-setbg="<?php echo $row['rec_image'] ?>">
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="../sierra/recipe_detail.php?rec_id=<?php echo $row['rec_id']?>"><?php echo $row['rec_name'] ?></a></h6>
+                            <span><a href="../sierra/recipe_detail.php?rec_id=<?php echo $row['rec_id']?>" style="color:black;"><?php echo $row['rec_name'] ?></a></span>
                             <h6>作者:<?php echo $row['user_name'] ?></h6>
                             
                         </div>

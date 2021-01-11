@@ -112,7 +112,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="bg">
                             <?php
-                                $sql2 = 'SELECT * FROM recipe ORDER BY rec_date DESC';
+                                $sql2 = 'SELECT * FROM recipe r,user u where r.user_email = u.user_email ORDER BY rec_date DESC';
                                 $result2 = mysqli_query($link, $sql2);
                                 if(mysqli_num_rows($result2) > 0){
                                     while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)){
@@ -123,6 +123,7 @@
                                                 </div>
                                                 <div class="latest-product__item__text">
                                                     <span><?php echo $row2['rec_name']; ?></span>
+                                                    <h6>作者:<?php echo $row2['user_name'] ?></h6>
                                                 </div>
                                             </a>   
                                        <?php
@@ -140,7 +141,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="bg">
                             <?php
-                                $sql3 = 'SELECT m.rec_id, rec_name, rec_image, COUNT(m.rec_id) as rec_count FROM recipe r, mylike m where r.rec_id=m.rec_id group by m.rec_id order by rec_count DESC';
+                                $sql3 = 'SELECT m.rec_id, rec_name, rec_image, COUNT(m.rec_id) as rec_count, u.user_name FROM recipe r, mylike m,user u where r.user_email = u.user_email and r.rec_id=m.rec_id group by m.rec_id order by rec_count DESC';
                                 $result3 = mysqli_query($link, $sql3);
                                 if(mysqli_num_rows($result3) > 0){
                                     while($row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC)){
@@ -151,6 +152,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <span><?php echo $row3['rec_name']; ?></span>
+                                                <h6>作者:<?php echo $row3['user_name'] ?></h6>
                                             </div>
                                         </a>    
                                    <?php
@@ -184,8 +186,7 @@
             <div class="row">
         <!-- 連接資料庫 -->
         <?php
-             
-            $sql1 = 'SELECT * FROM dessert.news ORDER BY news_date DESC limit 3;';
+            $sql1 = 'SELECT * FROM dessert.news ORDER BY news_date DESC limit 6';
             $result = mysqli_query($link, $sql1);
             while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
 
@@ -198,7 +199,8 @@
                             <ul>
                                 <li><i class="fa fa-calendar-o"></i><?php echo $row['news_date'] ?></li>
                             </ul>
-                            <h5><a href="#"><?php echo $row['news_title'] ?></a></h5>
+                            <h5><a href="../michelle/news_details.php?news_id=<?php echo $row['news_id'] ?>&reader=user&loc=index"><?php echo $row['news_title'] ?></a></h5>
+                            <a href="../michelle/news_details.php?news_id=<?php echo $row['news_id'] ?>&reader=user&loc=index" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                         </div>
                     </div>
                 </div>
@@ -206,6 +208,9 @@
             }
             mysqli_close($link);
             ?>
+            </div>
+            <div align = 'center'>
+                <a href="../michelle/news_user.php" class="primary-btn cart-btn">更多最新消息</a>
             </div>
         </div>
     </section>

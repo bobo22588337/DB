@@ -232,9 +232,12 @@
     <!-- News Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
+        
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
+                    <h4><a href="../betty/index.php" style="color: black;"><span class="fa fa-angle-left"></span><b>&nbsp;返回首頁</b></a></h4>
+                    <hr>
                         <table>
                             <thead>
                                 <tr>
@@ -245,7 +248,7 @@
                             </thead>
                             <tbody>
                                 <?php 
-                                    include('db_connection.php');
+                                    include('../betty/sql.php');
                                     $con = db();
                                 
                                     $sql = 'SELECT * FROM news, user WHERE news.user_email = user.user_email ORDER BY news_date DESC';
@@ -263,12 +266,14 @@
                                         <?php echo $record[7]?>
                                     </td>
                                 </tr>
+                                
                                 <?php 
                                     }
                                     mysqli_close($con);      
                                 ?> 
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>

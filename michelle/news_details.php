@@ -238,7 +238,7 @@
                     }
                     else if ($_GET['reader'] == 'user' && $_GET['loc'] == 'index')
                     {
-                        $url = 'index_news.php'; //改為首頁(位置待改
+                        $url = '../betty/index.php'; //改為首頁(位置待改
                     }
                     else {
                         $url = 'news.php';
