@@ -42,7 +42,7 @@
         </div>        
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
+                <li class="active"><a href="./index.php">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
@@ -72,13 +72,13 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="../img/dessert.png" alt=""></a>
+                        <a href="./index.php"><img src="../img/dessert.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="hero__search__form">
                         <form action="#">
-                            <input type="text" placeholder="What do yo u need?">
+                            <input type="text" placeholder="What do you need?">
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
@@ -87,7 +87,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
+                            <li><a href="#"><i class="fa fa-upload"></i></a></li>
                         </ul>
                         <div class="header__top__right__auth">
                             <a href="#"><i class="fa fa-user"></i> Login</a>
@@ -127,42 +127,44 @@
                 <div class="categories__slider owl-carousel">
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/sortcake.jpg">
-                            <h5><a href="sort.php?method=蛋糕">Cake</a></h5>
+                            <h5><a href="sort.php?method=蛋糕">蛋糕
+                            </a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/sortcookie.png">
-                            <h5><a href="sort.php?method=餅乾">Cookie</a></h5>
+                            <h5><a href="sort.php?method=餅乾">餅乾</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/sortpudding.png">
-                            <h5><a href="sort.php?method=布丁果凍">Pudding & Jelly</a></h5>
+                            <h5><a href="sort.php?method=布丁果凍">布丁&果凍</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/sortsweetsoup.jpg">
-                            <h5><a href="sort.php?method=甜湯">Sweet Soup</a></h5>
+                            <h5><a href="sort.php?method=甜湯">甜湯</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/bread.jpg">
-                            <h5><a href="sort.php?method=麵包">Bread</a></h5>
+                            <h5><a href="sort.php?method=麵包">麵包
+                            </a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/chocolate.jpg">
-                            <h5><a href="sort.php?method=巧克力糖果">Chocolate & Candy</a></h5>
+                            <h5><a href="sort.php?method=巧克力糖果">巧克力&糖果</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/pancake.png">
-                            <h5><a href="sort.php?method=鬆餅">Pancake</a></h5>
+                            <h5><a href="sort.php?method=鬆餅">鬆餅</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/pie.jpg">
-                            <h5><a href="sort.php?method=塔派">Pie</a></h5>
+                            <h5><a href="sort.php?method=塔派">塔派</a></h5>
                         </div>
                     </div>
                 </div>
@@ -187,6 +189,13 @@
                                 if(!$link){
                                     echo "db_con_wrong";
                                 }
+
+                                #連 user_email session
+                                $user_email = user();
+                                if(empty($user_email)){
+                                    header("location:../michelle/login.php");
+                                }
+
                                 $sql2 = 'SELECT * FROM dessert.recipe ORDER BY rec_date DESC;';
                                 $result2 = mysql_query($sql2);
                                 while($row2 = mysql_fetch_row($result2)){
@@ -213,7 +222,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                             <?php
-                                $sql2 = 'SELECT * FROM dessert.recipe ORDER BY rec_date DESC;';
+                                $sql2 = 'SELECT * FROM dessert.recipe r,dessert.mylike m where r.rec_id=m.rec_id ;';
                                 $result2 = mysql_query($sql2);
                                 while($row2 = mysql_fetch_row($result2)){
                             ?>
