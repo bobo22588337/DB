@@ -28,7 +28,19 @@
 
 <body>
     <?php
+    
+    include "sql.php";
+    $link = db();
+    $user_email = user();
+    
     include "header.php";
+    if(!empty($user_email)){
+        head("islogin");
+    }
+    else{
+        head("nologin");
+    }
+    
     ?>
     <!-- Hero Section Begin -->
     <section class="hero">
