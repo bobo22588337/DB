@@ -2,5 +2,5 @@
     session_start();
 	$_SESSION['user_email']="";
 	session_destroy();
-	header('location:../index.html'); //位置待改
+	header('location:../betty/index.php'); //位置待改
 ?>
