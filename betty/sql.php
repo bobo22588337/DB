@@ -2,7 +2,7 @@
 
   function db(){
     $link = mysqli_connect("localhost","root","12345678", "dessert");
-    mysqli_query($link,"SET CHARACTER NAMES UTF8");
+    mysqli_query($link,"SET NAMES 'utf8'");
     return $link;
    
   }
