@@ -26,6 +26,18 @@
 </head>
 
 <body>
+    <?php
+    include "sql.php";
+    $link = db();
+    if(!$link){
+        echo "db_con_wrong";
+    }
+    #連 user_email session
+    $user_email = user();
+    if(empty($user_email)){
+    header("location:../michelle/login.php");
+    }
+    ?>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -155,18 +167,6 @@
             </div>
             <div class="row featured__filter">
             <?php
-                include "sql.php";
-                $link = db();
-                if(!$link){
-                    echo "db_con_wrong";
-                }
-
-                #連 user_email session
-                $user_email = user();
-                if(empty($user_email)){
-                    header("location:../michelle/login.php");
-                }
-                
                 $sort = $_GET['method'];
                 $sql = "SELECT * FROM dessert.recipe where rec_sort = '$sort'";
                 $result = mysql_query($sql);

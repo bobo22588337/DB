@@ -27,7 +27,18 @@
 </head>
 
 <body>
-    
+    <?php
+    include "sql.php";
+    $link = db();
+    if(!$link){
+        echo "db_con_wrong";
+    }
+    #連 user_email session
+    $user_email = user();
+    if(empty($user_email)){
+        header("location:../michelle/login.php");
+    }
+    ?>
 
     <!-- Page Preloder -->
     <div id="preloder">
@@ -184,19 +195,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                             <?php
-                                include "sql.php";
-                                $link = db();
-                                if(!$link){
-                                    echo "db_con_wrong";
-                                }
-
-                                #連 user_email session
-                                $user_email = user();
-                                if(empty($user_email)){
-                                    header("location:../michelle/login.php");
-                                }
-
-                                $sql2 = 'SELECT * FROM dessert.recipe ORDER BY rec_date DESC;';
+                                $sql2 = 'SELECT * FROM dessert.recipe ORDER BY rec_date DESC';
                                 $result2 = mysql_query($sql2);
                                 while($row2 = mysql_fetch_row($result2)){
                             ?>
@@ -222,7 +221,8 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                             <?php
-                                $sql2 = 'SELECT * FROM dessert.recipe r,dessert.mylike m where r.rec_id=m.rec_id ;';
+                                $sql2 = 'SELECT * FROM dessert.recipe r,dessert.mylike m where r.rec_id=m.rec_id group by m.rec_id
+                                having count(m.rec_id) order by m.rec_id';
                                 $result2 = mysql_query($sql2);
                                 while($row2 = mysql_fetch_row($result2)){
                             ?>
