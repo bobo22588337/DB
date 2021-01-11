@@ -98,42 +98,32 @@
                         
                         <!-- mylike START -->
                         <?php
-                        $sql1 = "SELECT * FROM mylike WHERE rec_id='$recipe_id' AND user_email='$user_email'";
-                        $result1 = mysqli_query($db, $sql1);
-                        if(mysqli_num_rows($result1) > 0){
-                            if(!empty($user_email)){
+                        if(!empty($user_email)){
+                            $sql1 = "SELECT * FROM mylike WHERE rec_id='$recipe_id' AND user_email='$user_email'";
+                            $result1 = mysqli_query($db, $sql1);
+                            if(mysqli_num_rows($result1) > 0){
                                 ?>
                                 <a href="recipe_mylike_con.php?rec_id=<?php echo $recipe_id; ?>&user_email=<?php echo $user_email; ?>&islike=1">
                                     <i class="fa fa-heart heart_icon fa-2x"></i>
                                 </a>
-                            <?php
+                                <?php
                             }
                             else{
                                 ?>
-                                <a href="../michelle/login.php">
-                                    <i class="fa fa-heart heart_icon fa-2x"></i>
+                                <a href="recipe_mylike_con.php?rec_id=<?php echo $recipe_id; ?>&user_email=<?php echo $user_email; ?>&islike=0">
+                                    <i class="fa fa-heart-o heart_icon fa-2x"></i>
                                 </a>
                                 <?php
                             }
                         }
                         else{
-                            if(!empty($user_email)){
-                                ?>
-                                <a href="recipe_mylike_con.php?rec_id=<?php echo $recipe_id; ?>&user_email=<?php echo $user_email; ?>&islike=0">
-                                    <i class="fa fa-heart-o heart_icon fa-2x"></i>
-                                </a>
+                            ?>
+                            <a href="../michelle/login.php">
+                                <i class="fa fa-heart-o heart_icon fa-2x"></i>
+                            </a>
                             <?php
-                            }
-                            else{
-                                ?>
-                                <a href="../michelle/login.php">
-                                    <i class="fa fa-heart-o heart_icon fa-2x"></i>
-                                </a>
-                            <?php
-                            }   
                         }
-                        
-                        
+    
                         $sql2 = "SELECT COUNT(*) FROM mylike WHERE rec_id='$recipe_id'";
                         $result2 = mysqli_query($db, $sql2);
                         $row = mysqli_fetch_array($result2);
