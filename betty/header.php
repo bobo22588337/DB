@@ -77,5 +77,25 @@ function head($i){
         <!-- Header Section End -->
         <?php
     }
+    else if($i == "manlogin"){
+        ?>
+        <!-- Header Section Begin -->
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__cart">
+                            <div class="header__top__right__auth">
+                                <a href="../michelle/login.php">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <!-- Header Section End -->
+        <?php
+    }
 }
 ?>

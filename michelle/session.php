@@ -25,6 +25,7 @@
 
             $_SESSION['user_email'] = $user_email;
             $_SESSION['user_name'] = $user_name;
+            $_SESSION['user_idy'] = "user";
         }
         else
         {
@@ -49,6 +50,7 @@
             case 1:
                 $_SESSION['user_email'] = $user_email;
                 $_SESSION['user_name'] = $record[2];
+                $_SESSION['user_idy'] = "user";
 
                 header('location: ../betty/index.php'); //位置待改
 
@@ -65,6 +67,7 @@
         if (!empty($record)) {
             $_SESSION['user_email'] = $user_email;
             $_SESSION['user_name'] = $record[2];
+            $_SESSION['user_idy'] = "admin";
             header('location: news.php');
         }
         else {
