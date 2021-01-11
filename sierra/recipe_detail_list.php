@@ -97,7 +97,7 @@ function query($q){
             return $food_qty;
         }
         
-        $sql3 = "SELECT * FROM step WHERE rec_id='$recipe_id'";
+        $sql3 = "SELECT * FROM step WHERE rec_id='$recipe_id' ORDER BY step_tag";
         $result3 = mysqli_query($db, $sql3);
         $recipe_step = array();
         if(mysqli_num_rows($result3) > 0){
