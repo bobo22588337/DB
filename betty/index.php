@@ -193,7 +193,7 @@
                     <div class="latest-product__text">
                         <h4>最新發布食譜</h4>
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
+                            <div class="bg">
                             <?php
                                 $sql2 = 'SELECT * FROM recipe ORDER BY rec_date DESC';
                                 $result2 = mysqli_query($link, $sql2);
@@ -217,11 +217,11 @@
                         </div>                        
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="latest-product__text">
                         <h4>熱門食譜</h4>
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
+                            <div class="bg">
                             <?php
                                 $sql3 = 'SELECT m.rec_id, rec_name, rec_image, COUNT(m.rec_id) as rec_count FROM recipe r, mylike m where r.rec_id=m.rec_id group by m.rec_id order by rec_count DESC';
                                 $result3 = mysqli_query($link, $sql3);
