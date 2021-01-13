@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="../img/sort/pie.jpg">
-                            <h5><a href="sort.php?method=塔派">塔派</a></h5>
+                            <h5><a href="sort.php?method=塔派">派塔</a></h5>
                         </div>
                     </div>
                 </div>
