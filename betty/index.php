@@ -124,7 +124,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="bg">
                             <?php
-                                $sql2 = 'SELECT * FROM recipe r,user u where r.user_email = u.user_email and r.rec_status = 1 ORDER BY rec_date DESC';
+                                $sql2 = 'SELECT * FROM recipe r,user u where r.user_email = u.user_email and r.rec_status = 1 ORDER BY rec_date DESC limit 5';
                                 $result2 = mysqli_query($link, $sql2);
                                 if(mysqli_num_rows($result2) > 0){
                                     while($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)){
@@ -153,7 +153,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="bg">
                             <?php
-                                $sql3 = 'SELECT m.rec_id, rec_name, rec_image, COUNT(m.rec_id) as rec_count, u.user_name FROM recipe r, mylike m,user u where r.user_email = u.user_email and r.rec_id=m.rec_id  and r.rec_status = 1 group by m.rec_id order by rec_count DESC';
+                                $sql3 = 'SELECT m.rec_id, rec_name, rec_image, COUNT(m.rec_id) as rec_count, u.user_name FROM recipe r, mylike m,user u where r.user_email = u.user_email and r.rec_id=m.rec_id  and r.rec_status = 1 group by m.rec_id order by rec_count DESC limit 5';
                                 $result3 = mysqli_query($link, $sql3);
                                 if(mysqli_num_rows($result3) > 0){
                                     while($row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC)){
