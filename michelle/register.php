@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" href="../betty/betty_style.css" type="text/css">
     
     <!-- hoverable hyperlink& buttons -->
     <style type="text/css">
@@ -51,19 +52,18 @@
 </head>
 
 <body> 
-        <!-- Session -->
-        <header class="header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="header__logo">
-                                <a href="../betty/index.php"><img src="../img/dessert.png" alt=""></a>
-                            </div>
-                        </div>
-                    </div>       
+    <?php include 'session.php'; ?>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="../betty/index.php"><img src="../img/dessert.png" alt=""></a>
+                    </div>
                 </div>
-            </header>
-    
+            </div>       
+        </div>
+    </header>
 
     <!-- Register Section Begin -->
     <section class="checkout spad">

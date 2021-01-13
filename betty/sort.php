@@ -74,8 +74,8 @@
     }elseif($_GET['method'] == "鬆餅"){
         $filter = ".鬆餅";
         $active7 = 'class="active"';
-    }elseif($_GET['method'] == "塔派"){
-        $filter = ".塔派";
+    }elseif($_GET['method'] == "派塔"){
+        $filter = ".派塔";
         $active8 = 'class="active"';
     }elseif($_GET['method'] == "全部"){
         $filter = "";
@@ -100,7 +100,7 @@
                             <li <?php echo $active5 ?> data-filter=".巧克力糖果"><a href="sort.php?method=巧克力糖果" style="color:black;">巧克力&糖果</a></li>
                             <li <?php echo $active6 ?> data-filter=".麵包"><a href="sort.php?method=麵包" style="color:black;">麵包</a></li>
                             <li <?php echo $active7 ?> data-filter=".鬆餅"><a href="sort.php?method=鬆餅" style="color:black;">鬆餅</a></li>
-                            <li <?php echo $active8 ?> data-filter=".塔派"><a href="sort.php?method=塔派" style="color:black;">塔派</a></li>
+                            <li <?php echo $active8 ?> data-filter=".派塔"><a href="sort.php?method=派塔" style="color:black;">派塔</a></li>
                         </ul>
                     </div>
                 </div>
