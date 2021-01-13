@@ -29,7 +29,7 @@ if(isset($_POST['recipe_new_add'])){
     if(empty($recipe_name)){
         echo "<script> alert('請輸入食譜名稱'); location.href = 'recipe_new.php'</script>";
     }
-    else if(strlen($recipe_name) >= 20){
+    else if(mb_strlen($recipe_name,"utf-8") >= 20){
         echo "<script> alert('請輸入20個字以內'); location.href = 'recipe_new.php'</script>";
     }
     else{
@@ -162,7 +162,7 @@ if(isset($_POST['rec_save'])){
     if(empty($recipe_name)){
         echo "<script> alert('請輸入食譜名稱'); location.href = 'recipe_new_detail.php?rec_id=$recipe_id&rec_name=$recipe_name&rec_sort=$recipe_sort&rec_qty=$recipe_qty&rec_cooktime=$recipe_cooktime&rec_pic=$rec_path_text&food_name=$recipe_food_name&food_qty=$recipe_food_qty&rec_step=$recipe_step'</script>";
     }
-    else if(strlen($recipe_name) >= 20){
+    else if(mb_strlen($recipe_name,"utf-8") >= 20){
         echo "<script> alert('請輸入20個字以內'); location.href = 'recipe_new_detail.php?rec_id=$recipe_id&rec_name=$recipe_name&rec_sort=$recipe_sort&rec_qty=$recipe_qty&rec_cooktime=$recipe_cooktime&rec_pic=$rec_path_text&food_name=$recipe_food_name&food_qty=$recipe_food_qty&rec_step=$recipe_step'</script>";
     }
     else{
@@ -209,7 +209,7 @@ if(isset($_POST['rec_report'])){
     if(empty($recipe_name)){
         echo "<script> alert('請輸入食譜名稱'); location.href = 'recipe_new_detail.php?rec_id=$recipe_id&rec_name=$recipe_name&rec_sort=$recipe_sort&rec_qty=$recipe_qty&rec_cooktime=$recipe_cooktime&rec_pic=$rec_path_text&food_name=$recipe_food_name&food_qty=$recipe_food_qty&rec_step=$recipe_step'</script>";
     }
-    else if(strlen($recipe_name) >= 20){
+    else if(mb_strlen($recipe_name,"utf-8") >= 20){
         echo "<script> alert('請輸入20個字以內'); location.href = 'recipe_new_detail.php?rec_id=$recipe_id&rec_name=$recipe_name&rec_sort=$recipe_sort&rec_qty=$recipe_qty&rec_cooktime=$recipe_cooktime&rec_pic=$rec_path_text&food_name=$recipe_food_name&food_qty=$recipe_food_qty&rec_step=$recipe_step'</script>";
     }
     else if($rec_path_text == $origin_pic_path){

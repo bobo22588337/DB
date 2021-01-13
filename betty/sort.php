@@ -109,7 +109,7 @@
                 <?php
                 $sort = $_GET['method'];
                 if($sort == "全部"){
-                    $sql1 = "SELECT * FROM recipe r,user u where r.user_email = u.user_email";
+                    $sql1 = "SELECT * FROM recipe r,user u where r.user_email = u.user_email and rec_status =1";
                     $result1 = mysqli_query($link, $sql1);
                     if(mysqli_num_rows($result1) > 0){
                         while($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)){
@@ -136,7 +136,7 @@
                     }
                 }
                 else{
-                    $sql = "SELECT * FROM recipe r,user u where rec_sort = '$sort' and r.user_email = u.user_email";
+                    $sql = "SELECT * FROM recipe r,user u where rec_sort = '$sort' and r.user_email = u.user_email and rec_status =1";
                     $result = mysqli_query($link,$sql);
                     if(mysqli_num_rows($result)>0){
                         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
