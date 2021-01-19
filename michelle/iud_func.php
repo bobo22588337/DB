@@ -21,14 +21,13 @@
     }
     /************* update news ************/
     if (isset($_POST['update_news'])) {
-        $user_name = $_POST['user_name'];
         $news_id = $_POST['news_id'];
         $news_title = $_POST['news_title'];
         $news_content = $_POST['news_content'];
         
         if($news_title != '' && $news_content != '')
         {
-            $sql = "update news set news_date = NOW(), user_name = '$user_name', news_title = '$news_title', news_content = '$news_content' where news_id = '$news_id'";
+            $sql = "update news set news_date = NOW(), user_email = '$user_email', news_title = '$news_title', news_content = '$news_content' where news_id = '$news_id'";
 
             mysqli_query($con, $sql);
 
